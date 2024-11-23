@@ -1,0 +1,49 @@
+<div class="container-fluid dol-holder">
+  <div class="row my-3 align-items-center">
+    <div class="col-md-3 col-12 dol-input">
+      <mat-form-field appearance="outline">
+        <input type="text" matInput [formControl]="SettingCode" [(ngModel)]="SattingCodeName" [matAutocomplete]="auto2"
+          placeholder="Set Code" (ngModelChange)="SattingCodeName = $event.toUpperCase()">
+        <mat-autocomplete name="nm" #auto2="matAutocomplete" (optionSelected)="FillSetCode();">
+          <mat-option *ngFor="let lot of filteredSattingCode | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3 col-12 dol-input">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <input disabled matInput name="nm" [(ngModel)]="SetCode">
+      </mat-form-field>
+    </div>
+    <div class="col-md-3 col-12"></div>
+    <div class="col-md-3 col-12">
+      <div class="dol-btn-group">
+        <button class="btn filt-btn" matTooltip="CLEAR" (click)="Clear()">
+          <mat-icon>clear</mat-icon>
+        </button>
+        <button *ngIf="NEWADD" id="add" class="btn ad-btn-display" matTooltip="ADD" (click)="add()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="gridshow" *ngIf="VIEW" style="display:none;">
+    <div id="grid" class="container">
+      <div class="row">
+        <ag-grid-angular style="width: 100%; height: calc(100vh - 230px);" class="ag-theme-alpine grid-customise"
+          [defaultColDef]="defaultColDef" [columnDefs]="columnDefs" (gridReady)="onGridReady($event)"
+          (rowClicked)='onGridRowClicked($event)' [animateRows]="true" [pagination]="true" [rowHeight]="rowHeight"
+          [overlayLoadingTemplate]="loadingTemplate" [overlayNoRowsTemplate]="noRowsTemplate">
+        </ag-grid-angular>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>

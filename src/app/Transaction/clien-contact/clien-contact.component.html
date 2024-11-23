@@ -1,0 +1,62 @@
+<div class="col-md-12">
+  <div class="pm-pro-d align-items-center mb-3">
+    <div class="col-md-10 text-center">
+      ADD NEW CONTACT
+    </div>
+    <div class="col-md-2 text-right pr-0">
+      <button class="btn filt-btn ml-auto" matTooltip="CLOSE" (click)="Close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="row suc-input mt-3">
+  <div class="col-md-12">
+    <mat-form-field appearance="outline">
+      <mat-label>Client Name</mat-label>
+      <input matInput [(ngModel)]="CNAME" placeholder="Client Name">
+    </mat-form-field>
+  </div>
+  <div class="col-md-12">
+    <mat-form-field appearance="outline">
+      <mat-label>Designation</mat-label>
+      <input matInput [(ngModel)]="CDESIGNATION" placeholder="Designation">
+    </mat-form-field>
+  </div>
+</div>
+<div class="row suc-input">
+
+  <div class="col-md-12">
+    <div class="row suc-input align-items-center">
+      <div class="col-md-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Country Code</mat-label>
+          <mat-select disableRipple (selectionChange)="ContryCodeChange($event)" [(ngModel)]="CONPHONECODE"
+            disableOptionCentering>
+            <mat-option *ngFor="let country of CountryList" [value]="country.CON_EXTNO">
+              <img style="vertical-align:middle; height: 21px;
+                width: 15%;" aria-hidden src="{{country.flag}}" height="25" />
+              {{country.ConCodeName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-9">
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput placeholder="Phone" [(ngModel)]="CONPHONE" (blur)="formatPhone()"
+            onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+        </mat-form-field>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="pm-pro-d align-items-center mb-3">
+    <button class="btn filt-btn" (click)="Save()">
+      <mat-icon>save</mat-icon>
+    </button>
+  </div>
+</div>

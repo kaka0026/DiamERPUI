@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row section-head-row align-items-center mt-minus">
+    <div class="col-6 pl-0">
+      <h5 class="section-title">
+        Add New Design
+      </h5>
+    </div>
+    <div class="col-6 text-right">
+      <div class="row">
+        <button class="btn filt-btn ml-auto " matTooltip="CLOSE" (click)="Close()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <button class="btn filt-btn mr-0" matTooltip="SAVE" (click)="Save()">
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-md-5 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline">
+        <input type="text" matInput [formControl]="Category" [(ngModel)]="CategoryCode" [matAutocomplete]="auto3"
+          placeholder="Category">
+        <mat-autocomplete name="nm" #auto3="matAutocomplete" (optionSelected)="fillsubcat($event)">
+          <mat-option *ngFor="let lot of filteredCategory | async" [value]="lot.name">
+            <span>{{ lot.name }}</span>
+            <span style="float: right; color: gray; font-size: 3mm;">{{ lot.sortname }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-5 col-12  dol-input mb-1">
+      <mat-form-field appearance="outline">
+        <input type="text" matInput [formControl]="SubCategory" [(ngModel)]="SubCategoryCode" [matAutocomplete]="auto4"
+          placeholder="SubCategory">
+        <mat-autocomplete name="nm" #auto4="matAutocomplete">
+          <mat-option *ngFor="let lot of filteredSubCategory | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-2 text-right pr-0">
+      <button class="btn filt-btn ml-auto  mr-0" (click)="SearchData()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <ag-grid-angular style="width: 100%; height: 700px;" class="ag-theme-alpine grid-customise"
+      [defaultColDef]="defaultColDef" [columnDefs]="columnDefs" (gridReady)="onGridReady($event)" [animateRows]="true"
+      [pagination]="true" [suppressRowClickSelection]="true" [rowSelection]="rowSelection"
+      (selectionChanged)="onSelectionChanged($event)" [rowMultiSelectWithClick]="true" [rowHeight]="rowHeight"
+      [overlayLoadingTemplate]="loadingTemplate" [overlayNoRowsTemplate]="noRowsTemplate">
+    </ag-grid-angular>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>

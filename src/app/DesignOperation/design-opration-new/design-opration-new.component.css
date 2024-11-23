@@ -1,0 +1,50 @@
+.don-form-group label {
+  width: 125px;
+}
+.don-form-group .dym-field {
+  width: calc(100% - 125px);
+  margin: 0;
+}
+.pm-profile-icon {
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  border: 2px solid #e4e4e4;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.pm-pro-info .btn.theme-btn {
+  margin: 10px auto;
+  display: block;
+}
+.pm-profile-data {
+  margin-top: 20px;
+}
+.new-img-holder {
+  width: 100%;
+  min-height: 300px;
+  border: 1px solid #eee;
+  border-bottom: 3px;
+}
+
+.new-img-holder {
+  width: 80%;
+  min-height: 270px;
+  border: 1px solid #eee;
+  border-bottom: 3px solid #eee;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.new-img-upload-btn-display {
+  margin-top: 40px;
+  width: 80%;
+  margin: 10px auto;
+  padding: 5px;
+  border: 1px solid #eee;
+}
+.head-btn-display-group.ml-auto {
+  display: inline-flex;
+}
+

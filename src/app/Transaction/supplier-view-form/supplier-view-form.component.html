@@ -1,0 +1,240 @@
+<div class="modal-body psbar">
+  <div class="container-fluid">
+    <div class="row section-head-row align-items-center mt-minus">
+      <div class="col-6 pl-0">
+        <h5 class="section-title">
+          Supplier Detail
+        </h5>
+      </div>
+      <div class="col-6 text-right">
+        <div class="row">
+          <button class="btn filt-btn ml-auto " matTooltip="CLOSE" (click)="Close()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-sm-12">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="row lgbox">
+            <div class="col-lg-10 col-md-10 col-sm-12 bord_rg">
+              <img src="http://uat.peacocktech.in/demo3/images/diam-1.svg" class="cnt_logo" />
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12">
+              <img id="ImgProfile" class="cnt_prf" [src]=profileImage />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="col-md-12 col-sm-12">
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 sd_bord">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <h4>Basic Detail</h4>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 sd_bord">
+                  <div class="scrl_div">
+
+                    <div class="divTable blueTable">
+                      <div class="divTableBody">
+                        <div class="divTableRow">
+                          <div class="divTableCell clnt_main">Company Name</div>
+                          <div class="divTableCell clnt_txt">{{SupplierInfo.Name}}</div>
+                          <div class="divTableCell clnt_main">Supplier ID</div>
+                          <div class="divTableCell clnt_txt">{{SupplierInfo.ClientID}}</div>
+                        </div>
+                        <div class="divTableRow">
+                          <div class="divTableCell clnt_main">PAN</div>
+                          <div class="divTableCell clnt_txt">{{SupplierInfo.PAN_NO}}</div>
+                          <div class="divTableCell clnt_main">GST</div>
+                          <div class="divTableCell clnt_txt">{{SupplierInfo.GST_NO}}</div>
+                        </div>
+                        <div class="divTableRow">
+                          <div class="divTableCell clnt_main"></div>
+                          <div class="divTableCell clnt_txt">
+                            <div class="cd-upfile">
+                              <img class="cd-displayfile" [src]=panImage />
+                            </div>
+                          </div>
+                          <div class="divTableCell clnt_main"></div>
+                          <div class="divTableCell clnt_txt">
+                            <div class="cd-upfile">
+                              <img class="cd-displayfile" [src]=gstImage />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <h4>Address</h4>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 sd_bord">
+                <div class="col-lg-12 col-md-12 col-sm-12 sd_bord ClsContact" *ngFor="let item of SupplierAddDetail">
+                  <div class="divTable blueTable">
+                    <div class="divTableBody">
+                      <div class="divTableRow">
+                        <div class="divTableCell clnt_main">Type Of Address</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.AddressType}}</div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell clnt_main">Office Number</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.OfficeNumber}}</div>
+                        <div class="divTableCell clnt_main">Building Name</div>
+                        <div class="divTableCell clnt_txt">{{item.BuildingName}}</div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell clnt_main">Road</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.Road}}</div>
+                        <div class="divTableCell clnt_main">Area</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.Area}}</div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell clnt_main">Country</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.Country_Name}}</div>
+                        <div class="divTableCell clnt_main">State</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.State_Name}}</div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell clnt_main">City</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.City_Name}}</div>
+                        <div class="divTableCell clnt_main">Pincode</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.Zip}}</div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell clnt_main">Map Link</div>
+                        <div class="divTableCell clnt_txtmap_lnk" style="cursor: pointer;"><a href="{{item.Map_Link}}"
+                            target="_blank">{{item.Map_Link}}</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <h4>Key Person</h4>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 sd_bord">
+                <div class="col-lg-12 col-md-12 col-sm-12 sd_bord ClsContact" *ngFor="let item of SupplierKeyPerDetail">
+                  <div class="divTable blueTable">
+                    <div class="divTableBody">
+                      <div class="divTableRow">
+                        <div class="divTableCell clnt_main">Designation</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.Designation}}</div>
+                        <div class="divTableCell clnt_main">Department</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.Department}}</div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell clnt_main">First Name</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.FirstName}}</div>
+                        <div class="divTableCell clnt_main">Last Name</div>
+                        <div class="divTableCell clnt_txt"><span class="mob1_clnt">{{item.LastName}}</span></div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell clnt_main">Email 1</div>
+                        <div class="divTableCell clnt_txt">
+                          <span class="mob1_clnt"> {{item.Email_Type_1}}</span>
+                          {{item.Email_1}}</div>
+                        <div class="divTableCell clnt_main">Email</div>
+                        <div class="divTableCell clnt_txt">
+                          <span class="mob1_clnt"> {{item.Email_Type_2}}</span>
+                          {{item.Email_2}}</div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell clnt_main">Mobile</div>
+                        <div class="divTableCell clnt_txt">
+                          <span class="mob1_clnt"> {{item.Contact_Via_1}}</span>
+                          <span class="mob1_clnt"> {{item.Contact_Type_1}}</span>
+                          {{item.Contact_1}}
+                          <span class="chk_supp">
+                            <input type="checkbox" class="sup-chk" title="Is WhatsApp Number"
+                              [checked]="item.IsWhatsApp_1">
+                            <input type="checkbox" class="sup-chk" title="Is Verify" [checked]="item.IsVerified_1">
+                          </span>
+                        </div>
+                        <div class="divTableCell clnt_main">Mobile</div>
+                        <div class="divTableCell clnt_txt">
+                          <span class="mob1_clnt"> {{item.Contact_Via_2}}</span>
+                          <span class="mob1_clnt"> {{item.Contact_Type_2}}</span>
+                          {{item.Contact_2}}
+                          <span class="chk_supp">
+                            <input type="checkbox" class="sup-chk" title="Is WhatsApp Number"
+                              [checked]="item.IsWhatsApp_1">
+                            <input type="checkbox" class="sup-chk" title="Is Verify" [checked]="item.IsVerified_2">
+                          </span>
+                        </div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell clnt_main">PAN</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.Pan_No_KP}}</div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell clnt_main"></div>
+                        <div class="divTableCell clnt_txt">
+                          <div class="cd-upfile">
+                            <img class="cd-displayfile" [src]="ImageUrl+item.Pan_Photo_KP" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <h4>Bank Detail</h4>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 sd_bord">
+                <div class="col-lg-12 col-md-12 col-sm-12 sd_bord ClsContact" *ngFor="let item of SupplierBankDetail">
+                  <div class="divTable blueTable">
+                    <div class="divTableBody">
+                      <div class="divTableRow">
+                        <div class="divTableCell clnt_main">Name Of Bank</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.BankName}}</div>
+                        <div class="divTableCell clnt_main">Account Type</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.AccountType}}</div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell clnt_main">Account Number</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.AccountNumber}}</div>
+                        <div class="divTableCell clnt_main">IFSC Code</div>
+                        <div class="divTableCell clnt_txt">{{item.IFSCCode}}</div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell clnt_main">Branch Name</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.BranchName}}</div>
+                        <div class="divTableCell clnt_main">Branch Address</div>
+                        <div class="divTableCell clnt_txt">
+                          {{item.BranchAddress}}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

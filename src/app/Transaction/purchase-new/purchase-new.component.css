@@ -1,0 +1,81 @@
+::ng-deep .mat-select-search-input {
+  padding: 16px 6px 16px 28px !important;
+  box-sizing: border-box;
+  width: 100%;
+}
+table th,
+table td {
+  padding: 0.5rem;
+  border-top: none;
+}
+
+table tr:not(:last-child) {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.modal-header {
+  padding: 1rem 1rem 0 1rem;
+}
+
+.modal-body {
+  padding: 0 1rem 0 1rem;
+}
+
+h4#modal-basic-title {
+  margin: 0 0 10px 0;
+}
+
+mat-h4,
+mat-subheading-1,
+mat-typography h4 {
+  margin: 0;
+}
+
+.pur_new-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.pur_new-header {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pur_new-header .mat-form-field {
+  min-width: 378px;
+}
+
+.pur_new-header section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pur_new-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pur_new-row .mat-form-field {
+  width: 100%;
+  max-width: 378px;
+}
+
+.pur_new-row .comment {
+  min-width: 100%;
+}
+
+.multi-2 {
+  display: flex;
+  min-width: 378px;
+  justify-content: space-between;
+}
+
+.multi-2 .mat-form-field {
+  max-width: 179px;
+}

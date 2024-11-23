@@ -1,0 +1,51 @@
+.diamond-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.diamond-header section {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.diamond-row {
+  display: flex;
+  gap: 0 1rem;
+  flex-wrap: wrap;
+}
+
+.diamond-row.center {
+  justify-content: center;
+}
+.diamond-row .comment {
+  min-width: 100%;
+}
+
+.diamond-row .mat-form-field {
+  width: 394px;
+}
+
+.multi {
+  display: flex;
+  width: 394px;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.multi mat-form-field {
+  min-width: 48% !important;
+}
+
+.multi mat-form-field.unit {
+  min-width: 25% !important;
+}
+
+.multi mat-form-field.full-width {
+  min-width: 70% !important;
+}
+
+.r-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

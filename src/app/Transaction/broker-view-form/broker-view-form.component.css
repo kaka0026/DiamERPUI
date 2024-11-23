@@ -1,0 +1,235 @@
+.modal_clnt {
+    max-width: 1250px;
+  }
+  
+  .clnt_head {
+    color: #98a8b4;
+  }
+  
+  .clnt_main {
+    color: #594F82;
+    font-weight: 500;
+    font-size: 13px;
+    width: 16.67% !important;
+  }
+  
+  .clnt_txt {
+    width: 33.33% !important;
+  }
+  
+  .clnt_main1 {
+    color: #594F82;
+    font-weight: 500;
+    font-size: 13px;
+    width: 16.67% !important;
+  }
+  
+  .clnt_txt1 {
+    width: 16.67% !important;
+  }
+  
+  .map_lnk {
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    display: block !important;
+    overflow: hidden !important;
+    width: 390px !important;
+    text-decoration: underline;
+  }
+  
+  div.blueTable {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+  }
+  
+  .divTable.blueTable .divTableCell, .divTable.blueTable .divTableHead {
+    border: 1px solid #eee;
+    padding: 6px 10px;
+  }
+  
+  .divTable.blueTable .divTableBody .divTableCell {
+    font-size: 13px;
+    height:32px;
+    vertical-align:middle;
+  }
+  
+  .divTable.blueTable .divTableRow:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .blueTable .tableFootStyle {
+    font-size: 14px;
+  }
+  
+    .blueTable .tableFootStyle .links {
+        text-align: right;
+    }
+  
+        .blueTable .tableFootStyle .links a {
+            display: inline-block;
+            background: #1C6EA4;
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+  
+  .blueTable.outerTableFooter {
+    border-top: none;
+  }
+  
+    .blueTable.outerTableFooter .tableFootStyle {
+        padding: 3px 5px;
+    }
+  /* DivTable.com */
+  .divTable {
+    display: table;
+  }
+  
+  .divTableRow {
+    display: table-row;
+  }
+  
+  .divTableHeading {
+    display: table-header-group;
+  }
+  
+  .divTableCell, .divTableHead {
+    display: table-cell;
+  }
+  
+  .divTableHeading {
+    display: table-header-group;
+  }
+  
+  .divTableFoot {
+    display: table-footer-group;
+  }
+  
+  .divTableBody {
+    display: table-row-group;
+  }
+  
+  .clnt_gend .divTableCell {
+    border-top: 1px solid transparent !important;
+    border-bottom: 1px solid transparent !important;
+    background-color: #f9f9f9;
+  }
+  
+  .clnt_mail1 .divTableCell {
+    background-color: #fff;
+  }
+  
+  .clnt_pan .divTableCell {
+    background-color: #f9f9f9;
+  }
+  
+  .mob1_clnt {
+    margin-right: 5px;
+    border: 1px solid;
+    padding: 0px 8px;
+  }
+  
+  .sd_bord {
+    border-top: .07rem solid #eee;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .clnt_brace .divTableCell {
+    border-top: 1px solid transparent !important;
+    border-bottom: 1px solid transparent !important;
+  }
+  
+  .cd-displayfile {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  .clnt_unt .divTableCell {
+    width: 16.67% !important;
+  }
+  
+  .brace_main {
+    width: 16.67% !important;
+  }
+  
+  .brace_txt {
+    width: 33.33% !important;
+  }
+  
+  .prod_main {
+    width: 16.67% !important;
+  }
+  
+  .prod_txt {
+    width: 83.33% !important;
+  }
+  
+  .unt_col {
+    color: #594F82;
+    font-weight: 500;
+  }
+  
+  .min_bx {
+    margin-top: 10px;
+  }
+  
+  .cnt_logo {
+    width: 300px;
+    padding: 10px;
+  }
+  
+  .cnt_prf {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .bord_rg {
+    border-right: 1px solid #eee;
+  }
+  
+  .lgbox {
+    border: 1px solid #eee;
+    margin: 20px 0px;
+    text-align: center;
+  }
+  
+  @media screen and (max-width:1024px) {
+    .modal_clnt {
+        max-width: 1000px;
+    }
+  
+    .map_lnk {
+        width: 305px !important;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .modal_clnt {
+        max-width: 720px;
+    }
+  
+    .map_lnk {
+        width: 225px !important;
+    }
+  
+    .scrl_div {
+        overflow: scroll;
+        white-space: nowrap;
+    }
+  }
+  
+  @media screen and (max-width: 414px) {
+    .map_lnk {
+        width: 105px !important;
+    }
+  }
+  .modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;
+    height: 600px;
+  }
+  

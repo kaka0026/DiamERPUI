@@ -1,0 +1,351 @@
+<div class="modal-body psbar">
+  <div class="container-fluid px-0">
+    <div class="row section-head-row align-items-center mt-minus">
+      <div class="col-6 pl-0">
+        <h5 class="section-title">
+          Party List
+        </h5>
+      </div>
+      <div class="col-6 text-right">
+        <div class="row">
+          <button class="btn filt-btn ml-auto " matTooltip="CLOSE" (click)="Close()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-sm-12 px-0">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="row lgbox">
+            <div class="col-lg-10 col-md-10 col-sm-12 bord_rg">
+              <img src="http://uat.peacocktech.in/demo3/images/diam-1.svg" class="cnt_logo" />
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12">
+              <img id="ImgProfile" class="cnt_prf" [src]=profileImage />
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-12">
+          <h4>Client Detail:</h4>
+        </div>
+        <div class="col-lg-10 col-md-8 col-sm-12">
+          <label class="clnt_head">{{ClientInfo.P_Type_Name}}</label>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 sd_bord">
+          <div class="scrl_div">
+            <div class="divTable blueTable">
+              <div class="divTableBody">
+                <div class="divTableRow">
+                  <div class="divTableCell clnt_main">FirstName</div>
+                  <div class="divTableCell clnt_txt">{{ClientInfo.Prefix}} {{ClientInfo.Name}}</div>
+                  <div class="divTableCell clnt_main">Middle Name</div>
+                  <div class="divTableCell clnt_txt">{{ClientInfo.MiddleName}}</div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell clnt_main">LastName</div>
+                  <div class="divTableCell clnt_txt">{{ClientInfo.LastName}}</div>
+                  <div class="divTableCell clnt_main">Client ID</div>
+                  <div class="divTableCell clnt_txt">{{ClientInfo.ClientID}}</div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell clnt_main">Contact Person</div>
+                  <div class="divTableCell clnt_txt">{{ClientInfo.ContactPerson}}</div>
+                  <div class="divTableCell clnt_main">DOB</div>
+                  <div class="divTableCell clnt_txt">{{ClientInfo.ContactPersonDOBNew}}</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="scrl_div">
+            <div class="scrl_div">
+              <div class="divTable blueTable">
+                <div class="divTableBody">
+                  <div class="divTableRow clnt_gend">
+                    <div class="divTableCell clnt_main1">Gender</div>
+                    <div class="divTableCell clnt_txt1">{{gender}}</div>
+                    <div class="divTableCell clnt_main1">Maritial</div>
+                    <div class="divTableCell clnt_txt1">{{ClientInfo.Maritial}}</div>
+                    <div class="divTableCell clnt_main1">Anniversary Date</div>
+                    <div class="divTableCell clnt_txt1">{{ClientInfo.AnniversaryDateNew}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="scrl_div">
+            <div class="divTable blueTable">
+              <div class="divTableBody">
+                <div class="divTableRow">
+                  <div class="divTableCell clnt_main">Spouse Name</div>
+                  <div class="divTableCell clnt_txt">{{ClientInfo.SpouseName}}</div>
+                  <div class="divTableCell clnt_main">Spouse DOB</div>
+                  <div class="divTableCell clnt_txt">{{ClientInfo.SpouseNameDOBNew}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="scrl_div">
+            <div class="divTable blueTable">
+              <div class="divTableBody">
+                <div class="divTableRow clnt_gend">
+                  <div class="divTableCell clnt_main">Mobile 1</div>
+                  <div class="divTableCell clnt_txt"><span
+                      class="mob1_clnt">{{ClientInfo.Mobile_1_CC_Code_Country}}</span><span>{{ClientInfo.Mobile_1_NO}}</span>
+                  </div>
+                  <div class="divTableCell clnt_main">Mobile 1</div>
+                  <div class="divTableCell clnt_txt"><span
+                      class="mob1_clnt">{{ClientInfo.Mobile_2_CC_Code_Country}}</span><span>{{ClientInfo.Mobile_2_NO}}</span>
+                  </div>
+                </div>
+                <div class="divTableRow clnt_mail1">
+                  <div class="divTableCell clnt_main">Email1</div>
+                  <div class="divTableCell clnt_txt">{{ClientInfo.Email1}}</div>
+                  <div class="divTableCell clnt_main">Email2</div>
+                  <div class="divTableCell clnt_txt">{{ClientInfo.Email2}}</div>
+                </div>
+                <div class="divTableRow clnt_pan">
+                  <div class="divTableCell clnt_main">PAN</div>
+                  <div class="divTableCell clnt_txt">{{ClientInfo.PAN_NO}}</div>
+                  <div class="divTableCell clnt_main">ADHAR</div>
+                  <div class="divTableCell clnt_txt">{{ClientInfo.ADHAR_NO}}</div>
+                </div>
+                <div class="divTableRow clnt_mail1">
+                  <div class="divTableCell clnt_main"></div>
+                  <div class="divTableCell clnt_txt">
+                    <div class="cd-upfile">
+                      <img id="panimg" style="width:40%;height: 150px;" class="cd-displayfile" [src]=PanImage />
+                      <iframe id="panfrm" style="width:40%;height: 150px;display: none;" class="cd-displayfile"
+                        [src]="sanitizer.bypassSecurityTrustResourceUrl(PanImageframe)"></iframe>
+                    </div>
+                  </div>
+                  <div class="divTableCell clnt_main"></div>
+                  <div class="divTableCell clnt_txt">
+                    <div class="cd-upfile">
+                      <img id="adharimg" style="width:40%;height: 150px;" class="cd-displayfile" [src]=AdharImage />
+                      <iframe id="adharfrm" style="width:40%;height: 150px; display: none;" class="cd-displayfile"
+                        [src]="sanitizer.bypassSecurityTrustResourceUrl(AdharImageframe)"></iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="divTableRow clnt_pan">
+                  <div class="divTableCell clnt_main">Photo ID</div>
+                  <div class="divTableCell clnt_txt">{{ClientInfo.PHOTO_ID_NO}}</div>
+                  <div class="divTableCell clnt_main">GST</div>
+                  <div class="divTableCell clnt_txt">{{ClientInfo.GST_NO}}</div>
+                </div>
+                <div class="divTableRow clnt_pan">
+                  <div class="divTableCell clnt_main">Photo Type</div>
+                  <div class="divTableCell clnt_txt">{{ClientInfo.PHOTO_ID_TYPE}}</div>
+                  <div class="divTableCell clnt_main">State</div>
+                  <div class="divTableCell clnt_txt">{{PhotoState}}</div>
+                </div>
+                <div class="divTableRow clnt_mail1">
+                  <div class="divTableCell clnt_main"></div>
+                  <div class="divTableCell clnt_txt">
+                    <div class="cd-upfile">
+                      <img id="photoidimg" style="width:40%;height: 150px;" [src]=PHOTOID class="cd-displayfile" />
+                      <iframe id="photoidfrm" style="width:40%;height: 150px; display: none;" class="cd-displayfile"
+                        [src]="sanitizer.bypassSecurityTrustResourceUrl(PHOTOIDframe)"></iframe>
+                    </div>
+                  </div>
+                  <div class="divTableCell clnt_main"></div>
+                  <div class="divTableCell clnt_txt">
+                    <div class="cd-upfile">
+                      <img id="gstimg" style="width:40%;height: 150px;" class="cd-displayfile" [src]=GSTImage />
+                      <iframe id="gstfrm" style="width:40%;height: 150px; display: none;" class="cd-displayfile"
+                        [src]="sanitizer.bypassSecurityTrustResourceUrl(GSTImageframe)"></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h4>Address: PRIMARY</h4>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 sd_bord">
+          <div class="scrl_div">
+            <div class="divTable blueTable">
+              <div class="divTableBody">
+                <div class="divTableRow">
+                  <div class="divTableCell clnt_main">Address name</div>
+                  <div class="divTableCell clnt_txt">{{primaryaddress.Address_Name}}</div>
+                  <div class="divTableCell clnt_main">Address</div>
+                  <div class="divTableCell clnt_txt">{{primaryaddress.Address}}</div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell clnt_main">Apartment, Suite, etc (Optional)</div>
+                  <div class="divTableCell clnt_txt">{{primaryaddress.Apartment_OP}}</div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell clnt_main">Country</div>
+                  <div class="divTableCell clnt_txt">{{primaryaddress.Country_Name}}</div>
+                  <div class="divTableCell clnt_main">State</div>
+                  <div class="divTableCell clnt_txt">{{primaryaddress.State_Name}}</div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell clnt_main">City</div>
+                  <div class="divTableCell clnt_txt">{{primaryaddress.City_Name}}</div>
+                  <div class="divTableCell clnt_main">Pincode</div>
+                  <div class="divTableCell clnt_txt">{{primaryaddress.Zip}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h4>Other Addresses</h4>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 sd_bord">
+          <div class="scrl_div">
+            <div class="divTable blueTable" *ngFor="let item of otheraddresslist">
+              <div class="divTableBody">
+                <div class="divTableRow">
+                  <div class="divTableCell clnt_main">Address name</div>
+                  <div class="divTableCell clnt_txt">{{item.Address_Name}}</div>
+                  <div class="divTableCell clnt_main">Address</div>
+                  <div class="divTableCell clnt_txt">{{item.Address}}</div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell clnt_main">Apartment, Suite, etc (Optional)</div>
+                  <div class="divTableCell clnt_txt">{{item.Apartment_OP}}</div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell clnt_main">Country</div>
+                  <div class="divTableCell clnt_txt">{{item.Country_Name}}</div>
+                  <div class="divTableCell clnt_main">State</div>
+                  <div class="divTableCell clnt_txt">{{item.State_Name}}</div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell clnt_main">City</div>
+                  <div class="divTableCell clnt_txt">{{item.City_Name}}</div>
+                  <div class="divTableCell clnt_main">Pincode</div>
+                  <div class="divTableCell clnt_txt">{{item.Zip}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h4>Measurement</h4>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 sd_bord">
+          <div class="scrl_div">
+            <div class="divTable blueTable">
+              <div class="divTableBody">
+                <div class="divTableRow clnt_unt">
+                  <div class="divTableCell unt_col">Unit</div>
+                  <div class="divTableCell">{{ClientInfo.Unit}}</div>
+                </div>
+                <div class="divTableRow clnt_unt">
+                  <div class="divTableCell unt_col"></div>
+                  <div class="divTableCell unt_col">Thumb</div>
+                  <div class="divTableCell unt_col">Index</div>
+                  <div class="divTableCell unt_col">Middle</div>
+                  <div class="divTableCell unt_col">Ring</div>
+                  <div class="divTableCell unt_col">Pinky</div>
+                </div>
+                <div class="divTableRow clnt_unt">
+                  <div class="divTableCell unt_col">Left Hand</div>
+                  <div class="divTableCell">{{ClientInfo.Left_Thumb}}</div>
+                  <div class="divTableCell">{{ClientInfo.Left_Index}}</div>
+                  <div class="divTableCell">{{ClientInfo.Left_Middle}}</div>
+                  <div class="divTableCell">{{ClientInfo.Left_Ring}}</div>
+                  <div class="divTableCell">{{ClientInfo.Left_Pinky}}</div>
+                </div>
+                <div class="divTableRow clnt_unt">
+                  <div class="divTableCell unt_col">Right Hand</div>
+                  <div class="divTableCell">{{ClientInfo.Right_Thumb}}</div>
+                  <div class="divTableCell">{{ClientInfo.Right_Index}}</div>
+                  <div class="divTableCell">{{ClientInfo.Right_Middle}}</div>
+                  <div class="divTableCell">{{ClientInfo.Right_Ring}}</div>
+                  <div class="divTableCell">{{ClientInfo.Right_Pinky}}</div>
+                </div>
+                <div class="divTableRow clnt_unt">
+                  <div class="divTableCellheader unt_col_header">BRACELET/BANGLE MEASUREMENTS</div>
+                </div>
+                <div class="divTableRow clnt_unt">
+                  <div class="divTableCell unt_col">Openable Bangle</div>
+                  <div class="divTableCell">{{ClientInfo.Bangle_Openable}}</div>
+                  <div class="divTableCell unt_col">Fixed Bangle</div>
+                  <div class="divTableCell">{{ClientInfo.Bangle_Fixed}}</div>
+                  <div class="divTableCell unt_col">Bracelet</div>
+                  <div class="divTableCell">{{ClientInfo.Bracelet}}</div>
+                </div>
+                <div class="divTableRow clnt_unt">
+                  <div class="divTableCellheader unt_col_header">NECKLACE MEASUREMENTS</div>
+                </div>
+                <div class="divTableRow clnt_unt">
+                  <div class="divTableCell unt_col">Choker</div>
+                  <div class="divTableCell">{{ClientInfo.Choker}}</div>
+                  <div class="divTableCell unt_col">Around the Neck</div>
+                  <div class="divTableCell">{{ClientInfo.Necklace_Around_the_Neck}}</div>
+                  <div class="divTableCell unt_col">Long</div>
+                  <div class="divTableCell">{{ClientInfo.Long}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h4>Taste &amp; Preferences</h4>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 sd_bord">
+          <div class="scrl_div">
+            <div class="divTable blueTable">
+              <div class="divTableBody">
+                <div class="divTableRow">
+                  <div class="divTableCell prod_main unt_col">Design Style </div>
+                  <div class="divTableCell prod_txt">{{ClientInfo.StyleOfjewellary}}</div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell prod_main unt_col">Coloured Stone Preference</div>
+                  <div class="divTableCell prod_txt">{{ClientInfo.ColorStoneTypeName}}</div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell prod_main unt_col">Diamond Shape Preference</div>
+                  <div class="divTableCell prod_txt">{{ClientInfo.DiamondShapeName}}</div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell prod_main unt_col">Diamond Colour Range</div>
+                  <div class="divTableCell prod_txt">{{ClientInfo.DiamondColorName}}</div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell prod_main unt_col">Diamond Clarity Range</div>
+                  <div class="divTableCell prod_txt">{{ClientInfo.DiamondClarityName}}</div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell prod_main unt_col">Necklace Styles</div>
+                  <div class="divTableCell prod_txt">{{ClientInfo.NecklaceStyleName}}</div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell prod_main unt_col">Earring Styles</div>
+                  <div class="divTableCell prod_txt">{{ClientInfo.EaringStyleName}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <h4>Contact Details</h4>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 sd_bord ClsContact">
+            <div class="divTable blueTable" *ngFor="let item of ClientContactDetail">
+              <div class="divTableBody">
+                <div class="divTableRow">
+                  <div class="divTableCell clnt_main1">Name</div>
+                  <div class="divTableCell clnt_txt1">{{item.Name}}</div>
+                  <div class="divTableCell clnt_main1">Designation</div>
+                  <div class="divTableCell clnt_txt1">{{item.Designation}}</div>
+                  <div class="divTableCell clnt_main1">Phone</div>
+                  <div class="divTableCell clnt_txt1"><span class="mob1_clnt">{{item.MobileNo}}</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

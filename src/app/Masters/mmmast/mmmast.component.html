@@ -1,0 +1,84 @@
+<div id="addcontrol" class="filt-row" style="display: none;">
+  <mat-form-field appearance="outline" ngDefaultControl>
+    <mat-label>Code</mat-label>
+    <input id="code" matInput name="nm" [(ngModel)]="CODE" (change)="CheckCode();" (ngModelChange)="CODE = $event.toUpperCase()">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" ngDefaultControl>
+    <mat-label>Description</mat-label>
+    <input matInput name="nm" [(ngModel)]="DESC" (ngModelChange)="DESC = $event.toUpperCase()">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" ngDefaultControl>
+    <mat-label>From</mat-label>
+    <input matInput name="nm" [(ngModel)]="FROM"
+      onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" ngDefaultControl>
+    <mat-label>To</mat-label>
+    <input matInput name="nm" [(ngModel)]="TO"
+      onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 30% !important;">
+    <mat-label>Material</mat-label>
+    <mat-select [formControl]="Material" (ngModelChange)="materialchange()" multiple disableOptionCentering>
+      <mat-optgroup *ngFor="let group of MaterialList">
+        <mat-checkbox [checked]="group.selected" (change)="toggleSelection($event, group)"
+          (click)="$event.stopPropagation()">
+          <span class="fillby"><b><u>{{group.Name}}</u></b></span>
+        </mat-checkbox>
+        <mat-option name="nm" *ngFor="let item of group.Value" [value]="item.M_Code">
+          {{item.M_Name}}
+        </mat-option>
+      </mat-optgroup>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 30% !important;">
+    <mat-label>Shape</mat-label>
+    <mat-select [formControl]="Shape" placeholder="Shape" multiple disableOptionCentering>
+      <mat-option>
+        <ngx-mat-select-search placeholderLabel="Search...." i18n-placeholderLabel
+          noEntriesFoundLabel="'no matching Result found'" i18n-noEntriesFoundLabel
+          [formControl]="ShapeMultiFilterCtrl"></ngx-mat-select-search>
+      </mat-option>
+      <mat-option *ngFor="let item of filteredShapeMulti | async" [value]="item.id">
+        {{item.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-checkbox *ngIf="CHECK" class="example-margin" [(ngModel)]="chkIsActive">Is Active?</mat-checkbox>
+  <div class="flt-btn-group">
+    <button class="btn filt-btn" matTooltip="Back To List" (click)="List()">
+      <mat-icon>list</mat-icon>
+    </button>
+    <button class="btn filt-btn" matTooltip="SAVE" (click)="Save()">
+      <mat-icon>save</mat-icon>
+    </button>
+    <button class="btn filt-btn" matTooltip="CLEAR" (click)="Clear()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+</div>
+<button *ngIf="NEWADD" class="btn ad-btn-display" id="add" matTooltip="ADD" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+<div id="grid" class="container">
+  <div class="row">
+    <ag-grid-angular style="width: 100%; height: calc(100vh - 230px);" class="ag-theme-alpine"
+      [defaultColDef]="defaultColDef" [columnDefs]="columnDefs" (gridReady)="onGridReady($event)"
+      (rowClicked)='onGridRowClicked($event)' [animateRows]="true" [pagination]="true"
+      [overlayLoadingTemplate]="loadingTemplate" [overlayNoRowsTemplate]="noRowsTemplate">
+    </ag-grid-angular>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>

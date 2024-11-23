@@ -1,0 +1,530 @@
+<div class="diamond-container">
+  <fieldset class="diamond-header">
+    <h5 class="section-title">
+      Purchase In: Loose Diamonds - Certified
+    </h5>
+    <section class="btn-grp">
+      <button class="btn filt-btn ml-auto " matTooltip="CLOSE" (click)="Close()">
+        <mat-icon>close</mat-icon>
+      </button>
+      <button id="save" class="btn filt-btn  mr-0" matTooltip="SAVE" (click)="Save()">
+        <mat-icon>save</mat-icon>
+      </button>
+    </section>
+  </fieldset>
+
+  <fieldset class="diamond-row">
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Type of Purchase</mat-label>
+      <input type="text" matInput [formControl]="PurchaseType" [(ngModel)]="PURCHASETYPE" placeholder="Type of Purchase"
+        [matAutocomplete]="auto1" (ngModelChange)="PURCHASETYPE = $event.toUpperCase()" [disabled]="Disbled">
+      <mat-autocomplete name="nm" #auto1="matAutocomplete"
+        (optionSelected)="DISALEMEMO($event.option.value == 'NEW' ? '1' : '2')">
+        <mat-option *ngFor="let lot of filteredPurchaseType | async" [value]="lot.name">
+          <span>{{ lot.name }}</span>
+          <span style="float: right; color: gray; font-size: 3mm;">{{ lot.code }}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Memo Number</mat-label>
+      <input type="text" matInput [formControl]="MemoNumber" [(ngModel)]="MemoNumberCode" placeholder="Memo Number"
+        [matAutocomplete]="auto2" [disabled]="Disbled">
+      <mat-autocomplete name="nm" #auto2="matAutocomplete" (optionSelected)="GETMEMODETAIL($event.option.value)">
+        <mat-option *ngFor="let lot of filteredMemoNumber | async" [value]="lot.name">
+          <span>{{ lot.name }}</span>
+          <span style="float: right; color: gray; font-size: 3mm;">{{ lot.code }}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <section class="r-group">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="Category" *ngFor="let item of categoryarr">
+        <mat-radio-button value={{item.code}}>{{item.name}}</mat-radio-button>
+      </mat-radio-group>
+    </section>
+  </fieldset>
+
+  <span class="menu-title"> Basic Details</span>
+
+  <fieldset class="diamond-row">
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Category</mat-label>
+      <input matInput name="nm" [(ngModel)]="Category" disabled>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Material</mat-label>
+      <input type="text" matInput [formControl]="Material" [(ngModel)]="MaterialCode" [matAutocomplete]="auto3"
+        (ngModelChange)="MaterialCode = $event.toUpperCase();SelectMaterialOption();" [disabled]="Disbled">
+      <mat-autocomplete name="nm" #auto3="matAutocomplete" (optionSelected)="SelectMaterialOption();">
+        <mat-option *ngFor="let lot of filteredMaterial | async" [value]="lot.name">
+          <span>{{ lot.name }}</span>
+          <span style="float: right; color: gray; font-size: 3mm;">{{ lot.code }}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Shape</mat-label>
+      <input type="text" matInput [formControl]="Shape" [(ngModel)]="ShapeCode" [matAutocomplete]="auto4"
+        (ngModelChange)="ShapeCode = $event.toUpperCase()" [disabled]="Disbled">
+      <mat-autocomplete name="nm" #auto4="matAutocomplete" (optionSelected)="SelectShapeOption();">
+        <mat-option *ngFor="let lot of filteredShape | async" [value]="lot.name">
+          <span>{{ lot.name }}</span>
+          <span style="float: right; color: gray; font-size: 3mm;">{{ lot.code }}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Colour Scale</mat-label>
+      <mat-select [(ngModel)]="Colourscale" [disabled]="Disbled" disableOptionCentering>
+        <mat-option value="WHITE">WHITE</mat-option>
+        <mat-option value="FANCY">FANCY</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" [hidden]="Colourscale == 'WHITE'">
+      <mat-label>Intensity</mat-label>
+      <input type="text" matInput [formControl]="Intensity" [(ngModel)]="IntensityCode"
+        [matAutocomplete]="IntensityMulti" (ngModelChange)="IntensityCode = $event.toUpperCase()" [disabled]="Disbled">
+      <mat-autocomplete name="nm" #IntensityMulti="matAutocomplete" (optionSelected)="SelectIntensityOption();">
+        <mat-option *ngFor="let lot of filteredIntensity | async" [value]="lot.name">
+          <span>{{ lot.name }}</span>
+          <span style="float: right; color: gray; font-size: 3mm;">{{ lot.code }}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" [hidden]="Colourscale == 'WHITE'">
+      <mat-label>OverTone</mat-label>
+      <input type="text" matInput [formControl]="OverTone" [(ngModel)]="OverToneCode" [matAutocomplete]="OverToneMulti"
+        (ngModelChange)="OverToneCode = $event.toUpperCase()" [disabled]="Disbled">
+      <mat-autocomplete name="nm" #OverToneMulti="matAutocomplete" (optionSelected)="SelectOverToneOption();">
+        <mat-option *ngFor="let lot of filteredOverTone | async" [value]="lot.name">
+          <span>{{ lot.name }}</span>
+          <span style="float: right; color: gray; font-size: 3mm;">{{ lot.code }}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Colour</mat-label>
+      <input type="text" matInput [formControl]="Color" [(ngModel)]="ColorCode" [matAutocomplete]="auto6"
+        (ngModelChange)="ColorCode = $event.toUpperCase()" [disabled]="Disbled">
+      <mat-autocomplete name="nm" #auto6="matAutocomplete" (optionSelected)="SelectColorOption();">
+        <mat-option *ngFor="let lot of filteredColor | async" [value]="lot.name">
+          <span>{{ lot.name }}</span>
+          <span style="float: right; color: gray; font-size: 3mm;">{{ lot.code }}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Clarity</mat-label>
+      <input type="text" matInput [formControl]="Clarity" [(ngModel)]="ClarityCode" [matAutocomplete]="auto7"
+        (ngModelChange)="ClarityCode = $event.toUpperCase()" [disabled]="Disbled">
+      <mat-autocomplete name="nm" #auto7="matAutocomplete" (optionSelected)="SelectClarityOption();">
+        <mat-option *ngFor="let lot of filteredClarity | async" [value]="lot.name">
+          <span>{{ lot.name }}</span>
+          <span style="float: right; color: gray; font-size: 3mm;">{{ lot.code }}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </fieldset>
+
+  <fieldset class="diamond-row">
+    <mat-form-field appearance="outline">
+      <mat-label>Lab</mat-label>
+      <input type="text" matInput [formControl]="Lab" [(ngModel)]="LabCode" [matAutocomplete]="LabDrop"
+        (ngModelChange)="LabCode = $event.toUpperCase()" [disabled]="Disbled">
+      <mat-autocomplete name="nm" #LabDrop="matAutocomplete" (optionSelected)="SelectLabOption();">
+        <mat-option *ngFor="let lot of filteredLab | async" [value]="lot.name">
+          <span>{{ lot.name }}</span>
+          <span style="float: right; color: gray; font-size: 3mm;">{{ lot.code }}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Cert No.</mat-label>
+      <input matInput name="nm" [(ngModel)]="CERTNO" style="text-align: right !important;" [disabled]="Disbled">
+    </mat-form-field>
+  </fieldset>
+
+
+  <span class="menu-title"> Original Parcel Details</span>
+
+  <fieldset class="diamond-row">
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Pcs</mat-label>
+      <input matInput name="nm" [(ngModel)]="Pcs" style="text-align: right !important;" (keyup)="ChnagePriceCal() ;"
+        appTwoDigitDecimaNumber [disabled]="Disbled">
+    </mat-form-field>
+
+    <fieldset class="multi">
+      <mat-form-field class="full-width" appearance="outline" ngDefaultControl>
+        <mat-label>WT</mat-label>
+        <input matInput name="nm" [(ngModel)]="Weight" style="text-align: right !important;"
+          (keyup)="ChnagePriceCal() ;" appTwoDigitDecimaNumber [disabled]="Disbled">
+      </mat-form-field>
+      <mat-form-field class="unit" appearance="outline" ngDefaultControl>
+        <mat-label>Units</mat-label>
+        <mat-select [(ngModel)]="Unit" disableOptionCentering>
+          <mat-option value="CTS">CTS</mat-option>
+          <mat-option value="GMS">GMS</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </fieldset>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Avg Wt.</mat-label>
+      <input matInput name="nm" disabled=true [(ngModel)]="AvgWt" style="text-align: right !important;"
+        onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'
+        disabled>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Rap Price</mat-label>
+      <input matInput name="nm" [(ngModel)]="RAPPRICE" style="text-align: right !important;" appTwoDigitDecimaNumber
+        disabled>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Discount</mat-label>
+      <input matInput name="nm" [(ngModel)]="RAPDISC" style="text-align: right !important;" appTwoDigitDecimaNumber
+        [disabled]="Disbled">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Price/Wt (USD)</mat-label>
+      <input matInput name="nm" [(ngModel)]="PRICEWTUSD" (keyup)="ChangeINRPrice() ;"
+        style="text-align: right !important;" appTwoDigitDecimaNumber [disabled]="Disbled">
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Currency</mat-label>
+      <mat-select [(ngModel)]="CURRENCY" (selectionChange)="ChnageRangeFormat1()" disableOptionCentering>
+        <mat-option value="INR">INR</mat-option>
+        <mat-option value="USD">USD</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field id="conversation" style="display: none;" appearance="outline" ngDefaultControl>
+      <mat-label>Conversion Rate</mat-label>
+      <input matInput name="nm" [(ngModel)]="Conversion" (keyup)="ChangeINRPrice() ;"
+        style="text-align: right !important;" [disabled]="Disbled" appThreeDigitDecimaNumber>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Price/Wt (INR)</mat-label>
+      <input matInput name="nm" [(ngModel)]="PRICEWTINR" style="text-align: right !important;" appThreeDigitDecimaNumber
+        disabled>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Price by Pc/Price by Wt</mat-label>
+      <mat-select [(ngModel)]="selectedPriceUnit" (selectionChange)="ChnagePriceCal()" disableOptionCentering>
+        <mat-option value="Piece">
+          Piece</mat-option>
+        <mat-option value="Weight">
+          Weight</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Ask Price/UNIT</mat-label>
+      <input matInput name="nm" [(ngModel)]="PRUN" style="text-align: right !important;" (keyup)="ChnagePriceCal() ;"
+        [disabled]="Disbled" appThreeDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Total Amount</mat-label>
+      <input matInput disabled name="nm" [(ngModel)]="TAmount" style="text-align: right !important;" disabled>
+    </mat-form-field>
+  </fieldset>
+
+  <span class="menu-title"> Purchase Details</span>
+
+  <fieldset class="diamond-row">
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Pcs</mat-label>
+      <input matInput name="nm" [(ngModel)]="PurPcs" style="text-align: right !important;" [disabled]="Disbled"
+        (keyup)="PurChnagePriceCal() ;" appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <fieldset class="multi">
+      <mat-form-field class="full-width" appearance="outline" ngDefaultControl>
+        <mat-label>WT</mat-label>
+        <input matInput name="nm" [(ngModel)]="PurWeight" style="text-align: right !important;" [disabled]="Disbled"
+          (keyup)="PurChnagePriceCal() ;PurChangeForSelection()" appTwoDigitDecimaNumber>
+      </mat-form-field>
+
+      <mat-form-field class="unit" appearance="outline" ngDefaultControl>
+        <mat-label>Units</mat-label>
+        <mat-select [(ngModel)]="PurUnit" disableOptionCentering>
+          <mat-option value="CTS">CTS</mat-option>
+          <mat-option value="GMS">GMS</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </fieldset>
+
+    <fieldset class="multi">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Avg Wt.</mat-label>
+        <input matInput name="nm" disabled=true [(ngModel)]="PurAvgWt" style="text-align: right !important;" disabled
+          onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Selection %</mat-label>
+        <input matInput name="nm" [(ngModel)]="SelectionPer" style="text-align: right !important;" disabled
+          appTwoDigitDecimaNumber>
+      </mat-form-field>
+    </fieldset>
+  </fieldset>
+
+
+
+  <fieldset class="diamond-row center">
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Rap Price</mat-label>
+      <input matInput name="nm" [(ngModel)]="PURRAPPRICE" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+  </fieldset>
+
+
+  <fieldset class="diamond-row">
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Discount</mat-label>
+      <input matInput name="nm" [(ngModel)]="PURRAPDISC" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Value</mat-label>
+      <input matInput name="nm" [(ngModel)]="PURRAPVAL" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Amount</mat-label>
+      <input matInput name="nm" [(ngModel)]="PURRAPAMT" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Additional Discount (Rap Points)</mat-label>
+      <input matInput name="nm" [(ngModel)]="PURADDDISCRAP" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Value</mat-label>
+      <input matInput name="nm" [(ngModel)]="PURADDDISCRAPVAL" style="text-align: right !important;"
+        [disabled]="Disbled" appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Amount</mat-label>
+      <input matInput name="nm" [(ngModel)]="PURADDDISCRAPAMT" style="text-align: right !important;"
+        [disabled]="Disbled" appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Additional Discount (%)</mat-label>
+      <input matInput name="nm" [(ngModel)]="PURADDDISC" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Value</mat-label>
+      <input matInput name="nm" [(ngModel)]="PURADDDISCVAL" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Amount</mat-label>
+      <input matInput name="nm" [(ngModel)]="PURADDDISCAMT" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Premium (%)</mat-label>
+      <input matInput name="nm" [(ngModel)]="PREMIUM" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Value</mat-label>
+      <input matInput name="nm" [(ngModel)]="PREMIUMVAL" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Amount</mat-label>
+      <input matInput name="nm" [(ngModel)]="PREMIUMAMT" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Currency</mat-label>
+      <mat-select [(ngModel)]="PurCURRENCY" (selectionChange)="PurChnageRangeFormat1()" disableOptionCentering>
+        <mat-option value="INR">INR</mat-option>
+        <mat-option value="USD">USD</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field id='purConversation' style="display: none;" appearance="outline" ngDefaultControl>
+      <mat-label>Conversation rate</mat-label>
+      <input matInput name="nm" (keydown)="PurChnageRangeFormat1()" [(ngModel)]="PurConversion" [disabled]="Disbled"
+        style="text-align: right !important;" appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field id='expre' style="display: none;" appearance="outline" ngDefaultControl>
+      <mat-label>Exchange Premium</mat-label>
+      <input matInput name="nm" (keydown)="PurChnageRangeFormat1()" [(ngModel)]="EXPRE" [disabled]="Disbled"
+        style="text-align: right !important;" appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field id='netconv' style="display: none;" appearance="outline" ngDefaultControl>
+      <mat-label>Net Conversion Rate</mat-label>
+      <input matInput name="nm" [(ngModel)]="NETCONV" style="text-align: right !important;" disabled
+        appTwoDigitDecimaNumber disabled>
+    </mat-form-field>
+  </fieldset>
+
+  <fieldset class="diamond-row">
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Net Rap Discount</mat-label>
+      <input matInput name="nm" [(ngModel)]="NETRAPDISC" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Net Price/Wt (USD)</mat-label>
+      <input matInput name="nm" [(ngModel)]="NETPRICEWT" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Net Price/Pc (USD)</mat-label>
+      <input matInput disabled name="nm" [(ngModel)]="NETPRICPCS" style="text-align: right !important;" disabled>
+    </mat-form-field>
+  </fieldset>
+
+  <span class="menu-title"> Payment Details</span>
+
+
+  <fieldset class="diamond-row center">
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Final Amount</mat-label>
+      <input matInput name="nm" [(ngModel)]="FINALAMOUNT" style="text-align: right !important;" disabled
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+  </fieldset>
+
+
+  <fieldset class="diamond-row">
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Additional Discount 1 (%)</mat-label>
+      <input matInput name="nm" [(ngModel)]="ADDISC1" style="text-align: right !important;" appTwoDigitDecimaNumber
+        disabled>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Discount 1 (Amount)</mat-label>
+      <input matInput name="nm" [(ngModel)]="DISC1" style="text-align: right !important;" appTwoDigitDecimaNumber
+        disabled>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Discount Details</mat-label>
+      <input matInput name="nm" [(ngModel)]="DISCDET1" style="text-align: right !important;" appTwoDigitDecimaNumber
+        [disabled]="Disbled">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Additional Discount 2 (%)</mat-label>
+      <input matInput name="nm" [(ngModel)]="ADDISC2" style="text-align: right !important;" appTwoDigitDecimaNumber
+        disabled>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Discount 2 (Amount)</mat-label>
+      <input matInput name="nm" [(ngModel)]="DISC2" style="text-align: right !important;" appTwoDigitDecimaNumber
+        disabled>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Discount Details</mat-label>
+      <input matInput name="nm" [(ngModel)]="DISCDET2" style="text-align: right !important;" appTwoDigitDecimaNumber
+        [disabled]="Disbled">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Brokerage(%)</mat-label>
+      <input matInput name="nm" [(ngModel)]="BROKERAGEPER" style="text-align: right !important;" disabled
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Brokerage (Amount)</mat-label>
+      <input matInput name="nm" [(ngModel)]="BROKERAGEAMT" style="text-align: right !important;" disabled
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+  </fieldset>
+
+
+  <fieldset class="diamond-row">
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Early Payment Discount (%)</mat-label>
+      <input matInput name="nm" [(ngModel)]="ERLPAYDISCPER" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Early Payment Discount (Amount)</mat-label>
+      <input matInput name="nm" [(ngModel)]="ERLPAYDISCAMT" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+
+
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Net Amount Payable</mat-label>
+      <input matInput name="nm" [(ngModel)]="NETAMTPAYABLE" style="text-align: right !important;" [disabled]="Disbled"
+        appTwoDigitDecimaNumber>
+    </mat-form-field>
+  </fieldset>
+
+
+  <span class="menu-title"> Other Details</span>
+
+  <fieldset class="diamond-row">
+    <mat-form-field appearance="outline">
+      <mat-label>Purpose</mat-label>
+      <mat-select [(ngModel)]="selectedPurpose" (selectionChange)="ChnagePurpose()" disableOptionCentering>
+        <mat-option value="STOCK">
+          Stock</mat-option>
+        <mat-option value="ORDER">
+          Order</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Srock/Order Number</mat-label>
+      <input matInput name="nm" [(ngModel)]="OrdnerNo" [disabled]="Disbled">
+    </mat-form-field>
+  </fieldset>
+
+
+  <fieldset class="diamond-row">
+    <mat-form-field class="comment" appearance="outline" ngDefaultControl>
+      <mat-label>Comment</mat-label>
+      <textarea matInput placeholder="Comment" name="nm" [(ngModel)]="Comment" [disabled]="Disbled"></textarea>
+    </mat-form-field>
+  </fieldset>
+</div>

@@ -1,0 +1,148 @@
+<button class="btn ml-auto ad-btn-display" matTooltip="SAVE" (click)="Save()">
+  <mat-icon>save</mat-icon>
+</button>
+<div class="page-details">
+  <div class="filt-row d-flex justify-content-between mt-3">
+    <div class="col-md-3 suc-input">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Trn No.</mat-label>
+        <input matInput name="nm" [(ngModel)]="TRNNO" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3 suc-input">
+      <mat-form-field appearance="outline" (click)="SaveDate.open()">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="SaveDate" [max]="tomorrow" [readonly]="true" [(ngModel)]="DATE">
+        <mat-datepicker-toggle matSuffix [for]="SaveDate"></mat-datepicker-toggle>
+        <mat-datepicker #SaveDate></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3 suc-input">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Entry By.</mat-label>
+        <input matInput name="nm" [(ngModel)]="USERNAME" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3 suc-input">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Location</mat-label>
+        <input type="text" matInput [formControl]="Location" [(ngModel)]="LocationCode" placeholder="Location"
+          [matAutocomplete]="auto3" (ngModelChange)="LocationCode = $event.toUpperCase()">
+        <mat-autocomplete name="nm" #auto3="matAutocomplete">
+          <mat-option *ngFor="let lot of filteredLocation | async" [value]="lot.name">
+            <span>{{ lot.name }}</span>
+            <span style="float: right; color: gray; font-size: 3mm;">{{ lot.code }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="filt-row d-flex">
+    <div class="col-md-3 suc-input">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Supplier</mat-label>
+        <input type="text" matInput [formControl]="Supplier" [(ngModel)]="SupplierCode" placeholder="Supplier"
+          [matAutocomplete]="auto1">
+        <mat-autocomplete name="nm" #auto1="matAutocomplete">
+          <mat-option *ngFor="let lot of filteredSupplier | async" [value]="lot.name">
+            <span>{{ lot.name }}</span>
+            <span style="float: right; color: gray; font-size: 3mm;">{{ lot.sortname }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3 suc-input">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Supplier Memo No.</mat-label>
+        <input matInput name="nm" [(ngModel)]="SUPMEMONO" (ngModelChange)="SUPMEMONO = $event.toUpperCase()">
+      </mat-form-field>
+    </div>
+    <div class="col-md-3 suc-input">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Broker</mat-label>
+        <input type="text" matInput [formControl]="Broker" [(ngModel)]="BrokerCode" placeholder="Broker"
+          [matAutocomplete]="auto2">
+        <mat-autocomplete name="nm" #auto2="matAutocomplete">
+          <mat-option *ngFor="let lot of filteredBroker | async" [value]="lot.name">
+            <span>{{ lot.name }}</span>
+            <span style="float: right; color: gray; font-size: 3mm;">{{ lot.sortname }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="filt-row d-flex justify-content-between">
+    <div class="col-md-12 suc-input">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Comment</mat-label>
+        <textarea matInput placeholder="Comment" name="nm" [(ngModel)]="COMMENT"></textarea>
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <button class="btn ad-btn-display" style="margin: auto; margin-bottom: 10px !important;" id="add" matTooltip="ADD"
+    (click)="open(mymodal)">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <ng-template #mymodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">TYPE OF GOODS</h4>
+    </div>
+    <div class="modal-body">
+      <table id="display-table" class="table">
+        <tbody>
+          <tr [id]='option.M_CAT_SortName' class="" (dblclick)="OpenMemo(option.Type_Good,option.M_CAT_SortName,0)"
+            *ngFor="let option of MaterialPopArr" (click)="changeclass(option.Type_Good,option.M_CAT_SortName)">
+            <td [id]='option.M_CAT_SortName'> {{option.M_CAT_SortName}} </td>
+            <td>{{option.M_CAT_Name}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button id="Close" type="button" class="btn btn-outline-dark" (click)="modal.close('Cross click')">Close</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Save click')">Next</button>
+    </div>
+  </ng-template>
+
+  <div>
+    <ag-grid-angular style="width: 100%; height: calc(100vh - 500px);" class="ag-theme-alpine"
+      [defaultColDef]="defaultColDef" [columnDefs]="columnDefs" (gridReady)="onGridReady($event)"
+      (rowClicked)='onGridRowClicked($event)' [overlayLoadingTemplate]="loadingTemplate"
+      [overlayNoRowsTemplate]="noRowsTemplate">
+    </ag-grid-angular>
+  </div>
+  <div class="filt-row d-flex justify-content-between">
+    <div class="col-md-4 suc-input">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>No of Packets</mat-label>
+        <input matInput name="nm" [(ngModel)]="NOOFPCK" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4 suc-input">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Total Weight</mat-label>
+        <input matInput name="nm" [(ngModel)]="TWEIGHT" disabled>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4 suc-input">
+
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Total Amount</mat-label>
+        <input matInput name="nm" [(ngModel)]="TAMOUNT" disabled>
+      </mat-form-field>
+    </div>
+
+  </div>
+</div>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>

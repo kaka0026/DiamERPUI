@@ -1,0 +1,2363 @@
+@font-face {
+  font-family: 'NarolaCRM';
+  src:  url('fonts/NarolaCRM.eot?rsr9fg');
+  src:  url('fonts/NarolaCRM.eot?rsr9fg#iefix') format('embedded-opentype'),
+    url('fonts/NarolaCRM.ttf?rsr9fg') format('truetype'),
+    url('fonts/NarolaCRM.woff?rsr9fg') format('woff'),
+    url('fonts/NarolaCRM.svg?rsr9fg#NarolaCRM') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+ 
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'NarolaCRM' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-measurement:before {
+  content: "\eb97";
+}
+.icon-hotel-supplier:before {
+  content: "\eb95";
+}
+.icon-brokerage:before {
+  content: "\eb96";
+}
+.icon-text-file:before {
+  content: "\eb94";
+}
+.icon-wedding-rings:before {
+  content: "\eb93";
+}
+.icon-gear:before {
+  content: "\eb92";
+}
+.icon-admin:before {
+  content: "\eb91";
+}
+.icon-group:before {
+  content: "\eb90";
+}
+.icon-enterprise:before {
+  content: "\eb8f";
+}
+.icon-gem:before {
+  content: "\eb8d";
+}
+.icon-gems1:before {
+  content: "\eb8e";
+}
+.icon-map:before {
+  content: "\eb8c";
+}
+.icon-quality:before {
+  content: "\eb8b";
+}
+.icon-lab-microscope:before {
+  content: "\eb8a";
+}
+.icon-scrum:before {
+  content: "\eb89";
+}
+.icon-gems:before {
+  content: "\eb7f";
+}
+.icon-diamond-1:before {
+  content: "\eb80";
+}
+.icon-diamond-2:before {
+  content: "\eb81";
+}
+.icon-diamond1:before {
+  content: "\eb82";
+}
+.icon-jewelry-1:before {
+  content: "\eb83";
+}
+.icon-jewelry:before {
+  content: "\eb84";
+}
+.icon-maintenance:before {
+  content: "\eb85";
+}
+.icon-necklace-1:before {
+  content: "\eb86";
+}
+.icon-necklace:before {
+  content: "\eb87";
+}
+.icon-precious-stones:before {
+  content: "\eb88";
+}
+.icon-rubber:before {
+  content: "\eb7c";
+}
+.icon-save-button:before {
+  content: "\eb7d";
+}
+.icon-new-user:before {
+  content: "\eb7e";
+}
+.icon-customer-service:before {
+  content: "\eb78";
+}
+.icon-man-1:before {
+  content: "\eb79";
+}
+.icon-man:before {
+  content: "\eb7a";
+}
+.icon-meeting:before {
+  content: "\eb7b";
+}
+.icon-value-1:before {
+  content: "\eb71";
+}
+.icon-jewelry-store:before {
+  content: "\eb72";
+}
+.icon-product:before {
+  content: "\eb73";
+}
+.icon-value:before {
+  content: "\eb74";
+}
+.icon-diamond:before {
+  content: "\eb75";
+}
+.icon-rss-feed:before {
+  content: "\eb76";
+}
+.icon-frequency:before {
+  content: "\eb77";
+}
+.icon-magnifying-glass:before {
+  content: "\eb70";
+}
+.icon-bar-chart:before {
+  content: "\e900";
+}
+.icon-business-and-finance:before {
+  content: "\e901";
+}
+.icon-communication:before {
+  content: "\e902";
+}
+.icon-community:before {
+  content: "\e903";
+}
+.icon-discount:before {
+  content: "\e904";
+}
+.icon-home:before {
+  content: "\e905";
+}
+.icon-interest:before {
+  content: "\e906";
+}
+.icon-licensing:before {
+  content: "\e907";
+}
+.icon-line-chart:before {
+  content: "\e908";
+}
+.icon-money:before {
+  content: "\e909";
+}
+.icon-privacy:before {
+  content: "\e90a";
+}
+.icon-professions-and-jobs:before {
+  content: "\e90b";
+}
+.icon-resume:before {
+  content: "\e90c";
+}
+.icon-sale-1:before {
+  content: "\e90d";
+}
+.icon-sale:before {
+  content: "\e90e";
+}
+.icon-sell:before {
+  content: "\e90f";
+}
+.icon-shopping-bag:before {
+  content: "\e910";
+}
+.icon-status-bar:before {
+  content: "\e911";
+}
+.icon-tag:before {
+  content: "\e912";
+}
+.icon-tracking:before {
+  content: "\e913";
+}
+.icon-community1:before {
+  content: "\e914";
+}
+.icon-open-envelope-with-surprise-_a:before {
+  content: "\e915";
+}
+.icon-open-mail:before {
+  content: "\e916";
+}
+.icon-man-user:before {
+  content: "\e917";
+}
+.icon-close-envelope:before {
+  content: "\e918";
+}
+.icon-skype-logo:before {
+  content: "\e919";
+}
+.icon-telephone:before {
+  content: "\e91a";
+}
+.icon-close-cross:before {
+  content: "\e91b";
+}
+.icon-cancel:before {
+  content: "\e91c";
+}
+.icon-DealDay:before {
+  content: "\4a";
+}
+.icon-DIF:before {
+  content: "\49";
+}
+.icon-EX_EX_EX:before {
+  content: "\48";
+}
+.icon-HeartArrow:before {
+  content: "\47";
+}
+.icon-CBrilliant:before {
+  content: "\46";
+}
+.icon-Cushion:before {
+  content: "\45";
+}
+.icon-Emerald:before {
+  content: "\44";
+}
+.icon-Fancy:before {
+  content: "\43";
+}
+.icon-FancyStone:before {
+  content: "\42";
+}
+.icon-Heart:before {
+  content: "\41";
+}
+.icon-LgRadiant:before {
+  content: "\7a";
+}
+.icon-Marquise:before {
+  content: "\79";
+}
+.icon-Oval:before {
+  content: "\78";
+}
+.icon-Pear:before {
+  content: "\77";
+}
+.icon-Princess:before {
+  content: "\76";
+}
+.icon-Round:before {
+  content: "\75";
+}
+.icon-SqEmerald:before {
+  content: "\74";
+}
+.icon-SqRadiant:before {
+  content: "\73";
+}
+.icon-Client-List:before {
+  content: "\65";
+}
+.icon-Web-Track:before {
+  content: "\70";
+}
+.icon-UserProfile:before {
+  content: "\66";
+}
+.icon-Forgot-Password:before {
+  content: "\71";
+}
+.icon-MyConfirmation:before {
+  content: "\64";
+}
+.icon-Specific-Search:before {
+  content: "\67";
+}
+.icon-Advance-Search:before {
+  content: "\61";
+}
+.icon-add-stone:before {
+  content: "\62";
+}
+.icon-cart-list:before {
+  content: "\63";
+}
+.icon-compare-stones:before {
+  content: "\68";
+}
+.icon-confirm-stone:before {
+  content: "\69";
+}
+.icon-confirmation-list:before {
+  content: "\6a";
+}
+.icon-download:before {
+  content: "\6b";
+}
+.icon-Logout:before {
+  content: "\6c";
+}
+.icon-Reset:before {
+  content: "\6d";
+}
+.icon-SavedSearch:before {
+  content: "\6e";
+}
+.icon-Search:before {
+  content: "\6f";
+}
+.icon-excel:before {
+  content: "\72";
+}
+.icon-investment:before {
+  content: "\31";
+}
+.icon-My-Auction-View:before {
+  content: "\37";
+}
+.icon-Narola-Auction:before {
+  content: "\36";
+}
+.icon-My-Auction-View1:before {
+  content: "\38";
+}
+.icon-Narola-Auction1:before {
+  content: "\39";
+}
+.icon-other:before {
+  content: "\e91d";
+}
+.icon-Web-Track1:before {
+  content: "\e93a";
+}
+.icon-Whatsapp:before {
+  content: "\e945";
+}
+.icon-Fancy-Shape:before {
+  content: "\e93c";
+}
+.icon-Solitaire-Round:before {
+  content: "\e93d";
+}
+.icon-Full-Stock:before {
+  content: "\e93e";
+}
+.icon-Dossier-Round:before {
+  content: "\e93f";
+}
+.icon-hold-stone:before {
+  content: "\e940";
+}
+.icon-All-Stone:before {
+  content: "\e941";
+}
+.icon-Remove-Stone:before {
+  content: "\e942";
+}
+.icon-My-Order-Status:before {
+  content: "\e943";
+}
+.icon-Invoice:before {
+  content: "\e944";
+}
+.icon-Add-to-basket:before {
+  content: "\e91e";
+}
+.icon-Appointment-View:before {
+  content: "\e91f";
+}
+.icon-Bid-Config-Master:before {
+  content: "\e920";
+}
+.icon-Bid-Offer-View:before {
+  content: "\e921";
+}
+.icon-Bid-Stock-View:before {
+  content: "\e922";
+}
+.icon-Change-Profile:before {
+  content: "\e923";
+}
+.icon-Client-List1:before {
+  content: "\e924";
+}
+.icon-Confirm-Permission:before {
+  content: "\e925";
+}
+.icon-Confirm-Report:before {
+  content: "\e926";
+}
+.icon-Confirm-Stone-new:before {
+  content: "\e927";
+}
+.icon-Confirm-Stone:before {
+  content: "\e928";
+}
+.icon-Create-Albums:before {
+  content: "\e929";
+}
+.icon-Diamond-Demands:before {
+  content: "\e92a";
+}
+.icon-Diamond-Inquiry:before {
+  content: "\e92b";
+}
+.icon-Diamond-Search-blank:before {
+  content: "\e92c";
+}
+.icon-Diamond-Search:before {
+  content: "\e92d";
+}
+.icon-Discount-Master:before {
+  content: "\e92e";
+}
+.icon-Download-all-photo:before {
+  content: "\e92f";
+}
+.icon-Download-Inventory:before {
+  content: "\e930";
+}
+.icon-Edit-Profile:before {
+  content: "\e931";
+}
+.icon-Email-Configuration:before {
+  content: "\e932";
+}
+.icon-Excel-Upload:before {
+  content: "\e933";
+}
+.icon-Loose-Parcel-Offer-View:before {
+  content: "\e934";
+}
+.icon-Loose-Parcel-Upload:before {
+  content: "\e935";
+}
+.icon-Message:before {
+  content: "\e936";
+}
+.icon-My-Auction-View2:before {
+  content: "\e937";
+}
+.icon-My-Basket:before {
+  content: "\e938";
+}
+.icon-Narola-Auction2:before {
+  content: "\e939";
+}
+.icon-New-Arrival:before {
+  content: "\e93b";
+}
+.icon-News:before {
+  content: "\e946";
+}
+.icon-Parcel-Diamond:before {
+  content: "\e947";
+}
+.icon-Place-Your-Demand:before {
+  content: "\e948";
+}
+.icon-pointer:before {
+  content: "\e949";
+}
+.icon-QQ-Chat:before {
+  content: "\e94a";
+}
+.icon-Quick-Search:before {
+  content: "\e94b";
+}
+.icon-Send-Email:before {
+  content: "\e94c";
+}
+.icon-shape-cushion:before {
+  content: "\e94d";
+}
+.icon-shape-emerald:before {
+  content: "\e94e";
+}
+.icon-shape-heart:before {
+  content: "\e94f";
+}
+.icon-shape-marquise:before {
+  content: "\e950";
+}
+.icon-shape-oval:before {
+  content: "\e951";
+}
+.icon-shape-peer:before {
+  content: "\e952";
+}
+.icon-shape-princess:before {
+  content: "\e953";
+}
+.icon-shape-radiant:before {
+  content: "\e954";
+}
+.icon-shape-round:before {
+  content: "\e955";
+}
+.icon-shape-sqemerald:before {
+  content: "\e956";
+}
+.icon-shape-sqradiant:before {
+  content: "\e957";
+}
+.icon-Shipment-Master:before {
+  content: "\e958";
+}
+.icon-Shipment-Update:before {
+  content: "\e959";
+}
+.icon-skype:before {
+  content: "\e95a";
+}
+.icon-Stock-Manage:before {
+  content: "\e95b";
+}
+.icon-Stock-Share-View:before {
+  content: "\e95c";
+}
+.icon-TwinStone:before {
+  content: "\e95d";
+}
+.icon-Upload-Images:before {
+  content: "\e95e";
+}
+.icon-Upload-Popup:before {
+  content: "\e95f";
+}
+.icon-User-Activation:before {
+  content: "\e960";
+}
+.icon-User-Details:before {
+  content: "\e961";
+}
+.icon-wishlist:before {
+  content: "\e962";
+}
+.icon-Whatsapp2:before {
+  content: "\e963";
+}
+.icon-home1:before {
+  content: "\e964";
+}
+.icon-other1:before {
+  content: "\e965";
+}
+.icon-Web-Track2:before {
+  content: "\e966";
+}
+.icon-Whatsapp1:before {
+  content: "\e967";
+}
+.icon-Fancy-Shape1:before {
+  content: "\e968";
+}
+.icon-Solitaire-Round1:before {
+  content: "\e969";
+}
+.icon-Full-Stock1:before {
+  content: "\e96a";
+}
+.icon-Dossier-Round1:before {
+  content: "\e96b";
+}
+.icon-hold-stone1:before {
+  content: "\e96c";
+}
+.icon-All-Stone1:before {
+  content: "\e96d";
+}
+.icon-Remove-Stone1:before {
+  content: "\e96e";
+}
+.icon-My-Order-Status1:before {
+  content: "\e96f";
+}
+.icon-Invoice1:before {
+  content: "\e970";
+}
+.icon-Add-to-basket1:before {
+  content: "\e971";
+}
+.icon-Appointment-View1:before {
+  content: "\e972";
+}
+.icon-Bid-Config-Master1:before {
+  content: "\e973";
+}
+.icon-Bid-Offer-View1:before {
+  content: "\e974";
+}
+.icon-Bid-Stock-View1:before {
+  content: "\e975";
+}
+.icon-Change-Profile1:before {
+  content: "\e976";
+}
+.icon-Client-List2:before {
+  content: "\e977";
+}
+.icon-Confirm-Permission1:before {
+  content: "\e978";
+}
+.icon-Confirm-Report1:before {
+  content: "\e979";
+}
+.icon-Confirm-Stone-new1:before {
+  content: "\e97a";
+}
+.icon-Confirm-Stone1:before {
+  content: "\e97b";
+}
+.icon-Create-Albums1:before {
+  content: "\e97c";
+}
+.icon-Diamond-Demands1:before {
+  content: "\e97d";
+}
+.icon-Diamond-Inquiry1:before {
+  content: "\e97e";
+}
+.icon-Diamond-Search-blank1:before {
+  content: "\e97f";
+}
+.icon-Diamond-Search1:before {
+  content: "\e980";
+}
+.icon-Discount-Master1:before {
+  content: "\e981";
+}
+.icon-Download-all-photo1:before {
+  content: "\e982";
+}
+.icon-Download-Inventory1:before {
+  content: "\e983";
+}
+.icon-Edit-Profile1:before {
+  content: "\e984";
+}
+.icon-Email-Configuration1:before {
+  content: "\e985";
+}
+.icon-Excel-Upload1:before {
+  content: "\e986";
+}
+.icon-Loose-Parcel-Offer-View1:before {
+  content: "\e987";
+}
+.icon-Loose-Parcel-Upload1:before {
+  content: "\e988";
+}
+.icon-Message1:before {
+  content: "\e989";
+}
+.icon-My-Auction-View3:before {
+  content: "\e98a";
+}
+.icon-My-Basket1:before {
+  content: "\e98b";
+}
+.icon-Narola-Auction3:before {
+  content: "\e98c";
+}
+.icon-New-Arrival1:before {
+  content: "\e98d";
+}
+.icon-News1:before {
+  content: "\e98e";
+}
+.icon-Parcel-Diamond1:before {
+  content: "\e98f";
+}
+.icon-Place-Your-Demand1:before {
+  content: "\e990";
+}
+.icon-pointer1:before {
+  content: "\e991";
+}
+.icon-QQ-Chat1:before {
+  content: "\e992";
+}
+.icon-Quick-Search1:before {
+  content: "\e993";
+}
+.icon-Send-Email1:before {
+  content: "\e994";
+}
+.icon-shape-cushion1:before {
+  content: "\e995";
+}
+.icon-shape-emerald1:before {
+  content: "\e996";
+}
+.icon-shape-heart1:before {
+  content: "\e997";
+}
+.icon-shape-marquise1:before {
+  content: "\e998";
+}
+.icon-shape-oval1:before {
+  content: "\e999";
+}
+.icon-shape-peer1:before {
+  content: "\e99a";
+}
+.icon-shape-princess1:before {
+  content: "\e99b";
+}
+.icon-shape-radiant1:before {
+  content: "\e99c";
+}
+.icon-shape-round1:before {
+  content: "\e99d";
+}
+.icon-shape-sqemerald1:before {
+  content: "\e99e";
+}
+.icon-shape-sqradiant1:before {
+  content: "\e99f";
+}
+.icon-Shipment-Master1:before {
+  content: "\e9a0";
+}
+.icon-Shipment-Update1:before {
+  content: "\e9a1";
+}
+.icon-skype1:before {
+  content: "\e9a2";
+}
+.icon-Stock-Manage1:before {
+  content: "\e9a3";
+}
+.icon-Stock-Share-View1:before {
+  content: "\e9a4";
+}
+.icon-TwinStone1:before {
+  content: "\e9a5";
+}
+.icon-Upload-Images1:before {
+  content: "\e9a6";
+}
+.icon-Upload-Popup1:before {
+  content: "\e9a7";
+}
+.icon-User-Activation1:before {
+  content: "\e9a8";
+}
+.icon-User-Details1:before {
+  content: "\e9a9";
+}
+.icon-wishlist1:before {
+  content: "\e9aa";
+}
+.icon-Whatsapp21:before {
+  content: "\e9ab";
+}
+.icon-Confirm-Stone2:before {
+  content: "\23";
+}
+.icon-Hold:before {
+  content: "\2200";
+}
+.icon-Rough-No-Icon:before {
+  content: "\220a";
+}
+.icon-Show-User:before {
+  content: "\2203";
+}
+.icon-Confirm-Permission2:before {
+  content: "\3a";
+}
+.icon-investment1:before {
+  content: "\3b";
+}
+.icon-My-Auction-View4:before {
+  content: "\3c";
+}
+.icon-Narola-Auction4:before {
+  content: "\34";
+}
+.icon-cancel-button:before {
+  content: "\3d";
+}
+.icon-Change-Profile11:before {
+  content: "\35";
+}
+.icon-Discount-Master2:before {
+  content: "\32";
+}
+.icon-User-Activation2:before {
+  content: "\33";
+}
+.icon-Web-Track3:before {
+  content: "\3e";
+}
+.icon-calendar:before {
+  content: "\5a";
+}
+.icon-filter:before {
+  content: "\59";
+}
+.icon-Bgm:before {
+  content: "\58";
+}
+.icon-Bgm-Select:before {
+  content: "\57";
+}
+.icon-delete .path1:before {
+  content: "\56";
+  color: rgb(0, 0, 0);
+}
+.icon-delete .path2:before {
+  content: "\5b";
+  margin-left: -1em;
+  color: rgb(2, 2, 2);
+}
+.icon-edit:before {
+  content: "\55";
+}
+.icon-ico_add:before {
+  content: "\54";
+}
+.icon-ico_check1:before {
+  content: "\53";
+}
+.icon-ico_check_all:before {
+  content: "\52";
+}
+.icon-ico_check_all_1:before {
+  content: "\51";
+}
+.icon-ico_diamond_search:before {
+  content: "\50";
+}
+.icon-ico_uncheck:before {
+  content: "\4f";
+}
+.icon-ico_uncheck_all:before {
+  content: "\4e";
+}
+.icon-all-shape:before {
+  content: "\4d";
+}
+.icon-Certificate:before {
+  content: "\4c";
+}
+.icon-Download:before {
+  content: "\4b";
+}
+.icon-HA:before {
+  content: "\5c";
+}
+.icon-Image:before {
+  content: "\5d";
+}
+.icon-Movie:before {
+  content: "\5e";
+}
+.icon-Share:before {
+  content: "\5f";
+}
+.icon-Verify-Certificate:before {
+  content: "\60";
+}
+.icon-Close:before {
+  content: "\7b";
+}
+.icon-Keep-Shopping:before {
+  content: "\7c";
+}
+.icon-Order-Process:before {
+  content: "\7d";
+}
+.icon-Redio-Select:before {
+  content: "\7e";
+}
+.icon-Redio:before {
+  content: "\7f";
+}
+.icon-auction:before {
+  content: "\80";
+}
+.icon-Cart-Remove:before {
+  content: "\81";
+}
+.icon-Cart:before {
+  content: "\82";
+}
+.icon-Confirm:before {
+  content: "\83";
+}
+.icon-Email:before {
+  content: "\84";
+}
+.icon-images:before {
+  content: "\85";
+}
+.icon-Modify:before {
+  content: "\86";
+}
+.icon-Print:before {
+  content: "\87";
+}
+.icon-Video:before {
+  content: "\88";
+}
+.icon-Drop:before {
+  content: "\89";
+}
+.icon-Reset1:before {
+  content: "\8a";
+}
+.icon-Search1:before {
+  content: "\8b";
+}
+.icon-type:before {
+  content: "\8c";
+}
+.icon-Back-Arrow:before {
+  content: "\8d";
+}
+.icon-Change-Password:before {
+  content: "\8e";
+}
+.icon-Diamond-Search2:before {
+  content: "\8f";
+}
+.icon-Download-Inventory2:before {
+  content: "\90";
+}
+.icon-My-Basket2:before {
+  content: "\91";
+}
+.icon-New-Arrival2:before {
+  content: "\92";
+}
+.icon-Order-Status:before {
+  content: "\93";
+}
+.icon-Parcel-Diamonds:before {
+  content: "\94";
+}
+.icon-Place-Your-Demand2:before {
+  content: "\95";
+}
+.icon-Quick-Search2:before {
+  content: "\96";
+}
+.icon-Signout:before {
+  content: "\97";
+}
+.icon-Twin-Stone:before {
+  content: "\98";
+}
+.icon-submit:before {
+  content: "\99";
+}
+.icon-News2:before {
+  content: "\30";
+}
+.icon-Address:before {
+  content: "\e9ac";
+}
+.icon-AllShape:before {
+  content: "\e9ad";
+}
+.icon-arrow:before {
+  content: "\e9ae";
+}
+.icon-Ashoka:before {
+  content: "\e9af";
+}
+.icon-Asscher:before {
+  content: "\e9b0";
+}
+.icon-call:before {
+  content: "\e9b1";
+}
+.icon-camera:before {
+  content: "\e9b2";
+}
+.icon-CBrilliant1:before {
+  content: "\e9b3";
+}
+.icon-close:before {
+  content: "\e9b4";
+}
+.icon-close-round:before {
+  content: "\e9b5";
+}
+.icon-Cushion1:before {
+  content: "\e9b6";
+}
+.icon-Cushion-Brilliant:before {
+  content: "\e9b7";
+}
+.icon-Cushion-Plasma:before {
+  content: "\e9b8";
+}
+.icon-cutting:before {
+  content: "\e9b9";
+}
+.icon-down-arrow:before {
+  content: "\e9ba";
+}
+.icon-Education:before {
+  content: "\e9bb";
+}
+.icon-Emerald1:before {
+  content: "\e9bc";
+}
+.icon-Environmental:before {
+  content: "\e9bd";
+}
+.icon-facebook:before {
+  content: "\e9be";
+}
+.icon-Fancy1:before {
+  content: "\e9bf";
+}
+.icon-FancyStone1:before {
+  content: "\e9c0";
+}
+.icon-fax:before {
+  content: "\e9c1";
+}
+.icon-for-employees:before {
+  content: "\e9c2";
+}
+.icon-google-plus:before {
+  content: "\e9c3";
+}
+.icon-grading:before {
+  content: "\e9c4";
+}
+.icon-Health:before {
+  content: "\e9c5";
+}
+.icon-Heart1:before {
+  content: "\e9c6";
+}
+.icon-icon-Ashoka:before {
+  content: "\e9c7";
+}
+.icon-icon-SqEmerald:before {
+  content: "\e9c8";
+}
+.icon-icon-Square-Radiant:before {
+  content: "\e9c9";
+}
+.icon-inscription:before {
+  content: "\e9ca";
+}
+.icon-LgRadiant1:before {
+  content: "\e9cb";
+}
+.icon-logout:before {
+  content: "\e9cc";
+}
+.icon-mail:before {
+  content: "\e9cd";
+}
+.icon-Marquise1:before {
+  content: "\e9ce";
+}
+.icon-menu:before {
+  content: "\e9cf";
+}
+.icon-more:before {
+  content: "\e9d0";
+}
+.icon-Oval1:before {
+  content: "\e9d1";
+}
+.icon-Pear1:before {
+  content: "\e9d2";
+}
+.icon-pinterest:before {
+  content: "\e9d3";
+}
+.icon-plus:before {
+  content: "\e9d4";
+}
+.icon-Polishing:before {
+  content: "\e9d5";
+}
+.icon-Princess1:before {
+  content: "\e9d6";
+}
+.icon-Rose-Cut:before {
+  content: "\e9d7";
+}
+.icon-Round1:before {
+  content: "\e9d8";
+}
+.icon-sourcing:before {
+  content: "\e9d9";
+}
+.icon-SqEmerald1:before {
+  content: "\e9da";
+}
+.icon-SqRadiant1:before {
+  content: "\e9db";
+}
+.icon-Square-Emerald:before {
+  content: "\e9dc";
+}
+.icon-Square-Radiant:before {
+  content: "\e9dd";
+}
+.icon-twitter:before {
+  content: "\e9de";
+}
+.icon-video:before {
+  content: "\e9df";
+}
+.icon-youtube:before {
+  content: "\e9e0";
+}
+.icon-Appointment-View2:before {
+  content: "\e9e1";
+}
+.icon-Change-Profile2:before {
+  content: "\e9e2";
+}
+.icon-Client-List3:before {
+  content: "\e9e3";
+}
+.icon-Confirm-Permission3:before {
+  content: "\e9e4";
+}
+.icon-Confirm-Report2:before {
+  content: "\e9e5";
+}
+.icon-Confirm-Stone3:before {
+  content: "\e9e6";
+}
+.icon-Create-Albums2:before {
+  content: "\e9e7";
+}
+.icon-Diamond-Demands2:before {
+  content: "\e9e8";
+}
+.icon-Diamond-Inquiry2:before {
+  content: "\e9e9";
+}
+.icon-Diamond-Search3:before {
+  content: "\e9ea";
+}
+.icon-Discount-Master3:before {
+  content: "\e9eb";
+}
+.icon-Download-Inventory3:before {
+  content: "\e9ec";
+}
+.icon-Email-Configuration2:before {
+  content: "\e9ed";
+}
+.icon-Loose-Parcel-Add:before {
+  content: "\e9ee";
+}
+.icon-Loose-Parcel-Inquiry-View:before {
+  content: "\e9ef";
+}
+.icon-Loose-Parcel-Master:before {
+  content: "\e9f0";
+}
+.icon-My-Basket3:before {
+  content: "\e9f1";
+}
+.icon-My-Order-Status2:before {
+  content: "\e9f2";
+}
+.icon-New-Arrival3:before {
+  content: "\e9f3";
+}
+.icon-News3:before {
+  content: "\e9f4";
+}
+.icon-Parcel-Diamond2:before {
+  content: "\e9f5";
+}
+.icon-Place-Your-Demand3:before {
+  content: "\e9f6";
+}
+.icon-Quick-Search3:before {
+  content: "\e9f7";
+}
+.icon-Remove-Stone2:before {
+  content: "\e9f8";
+}
+.icon-Send-Email2:before {
+  content: "\e9f9";
+}
+.icon-Shipment-Master2:before {
+  content: "\e9fa";
+}
+.icon-Shipment-Notification:before {
+  content: "\e9fb";
+}
+.icon-Shipment-Update2:before {
+  content: "\e9fc";
+}
+.icon-Twin-Stone1:before {
+  content: "\e9fd";
+}
+.icon-Upload-Images2:before {
+  content: "\e9fe";
+}
+.icon-Upload-Popup2:before {
+  content: "\e9ff";
+}
+.icon-Add-to-basket2:before {
+  content: "\ea00";
+}
+.icon-All-Stone2:before {
+  content: "\ea01";
+}
+.icon-Appointment-View3:before {
+  content: "\ea02";
+}
+.icon-Bid-Config-Master2:before {
+  content: "\ea03";
+}
+.icon-Bid-Offer-View2:before {
+  content: "\ea04";
+}
+.icon-Bid-Stock-View2:before {
+  content: "\ea05";
+}
+.icon-Change-Profile3:before {
+  content: "\ea06";
+}
+.icon-Client-List4:before {
+  content: "\ea07";
+}
+.icon-Confirm-Permission4:before {
+  content: "\ea08";
+}
+.icon-Confirm-Report3:before {
+  content: "\ea09";
+}
+.icon-Confirm-Stone-new2:before {
+  content: "\ea0a";
+}
+.icon-Confirm-Stone4:before {
+  content: "\ea0b";
+}
+.icon-Create-Albums3:before {
+  content: "\ea0c";
+}
+.icon-Diamond-Demands3:before {
+  content: "\ea0d";
+}
+.icon-Diamond-Inquiry3:before {
+  content: "\ea0e";
+}
+.icon-Diamond-Search-blank2:before {
+  content: "\ea0f";
+}
+.icon-Diamond-Search4:before {
+  content: "\ea10";
+}
+.icon-Discount-Master4:before {
+  content: "\ea11";
+}
+.icon-Dossier-Round2:before {
+  content: "\ea12";
+}
+.icon-Download-all-photo2:before {
+  content: "\ea13";
+}
+.icon-Download-Inventory4:before {
+  content: "\ea14";
+}
+.icon-Edit-Profile2:before {
+  content: "\ea15";
+}
+.icon-Email-Configuration3:before {
+  content: "\ea16";
+}
+.icon-Excel-Upload2:before {
+  content: "\ea17";
+}
+.icon-Fancy-Shape2:before {
+  content: "\ea18";
+}
+.icon-Fancy-Stone:before {
+  content: "\ea19";
+}
+.icon-Full-Stock2:before {
+  content: "\ea1a";
+}
+.icon-hold-stone2:before {
+  content: "\ea1b";
+}
+.icon-invoice:before {
+  content: "\ea1c";
+}
+.icon-Loose-Parcel-Offer-View2:before {
+  content: "\ea1d";
+}
+.icon-Loose-Parcel-Upload2:before {
+  content: "\ea1e";
+}
+.icon-Message2:before {
+  content: "\ea1f";
+}
+.icon-My-Auction-View5:before {
+  content: "\ea20";
+}
+.icon-My-Basket4:before {
+  content: "\ea21";
+}
+.icon-My-Order-Status3:before {
+  content: "\ea22";
+}
+.icon-Narola-Auction5:before {
+  content: "\ea23";
+}
+.icon-New-Arrival4:before {
+  content: "\ea24";
+}
+.icon-News4:before {
+  content: "\ea25";
+}
+.icon-Parcel-Diamond3:before {
+  content: "\ea26";
+}
+.icon-Place-Your-Demand4:before {
+  content: "\ea27";
+}
+.icon-pointer2:before {
+  content: "\ea28";
+}
+.icon-QQ-Chat2:before {
+  content: "\ea29";
+}
+.icon-Quick-Search4:before {
+  content: "\ea2a";
+}
+.icon-Remove-Stone3:before {
+  content: "\ea2b";
+}
+.icon-Send-Email3:before {
+  content: "\ea2c";
+}
+.icon-shape-cushion2:before {
+  content: "\ea2d";
+}
+.icon-shape-emerald2:before {
+  content: "\ea2e";
+}
+.icon-shape-heart2:before {
+  content: "\ea2f";
+}
+.icon-shape-marquise2:before {
+  content: "\ea30";
+}
+.icon-shape-oval2:before {
+  content: "\ea31";
+}
+.icon-shape-peer2:before {
+  content: "\ea32";
+}
+.icon-shape-princess2:before {
+  content: "\ea33";
+}
+.icon-shape-radiant2:before {
+  content: "\ea34";
+}
+.icon-shape-round2:before {
+  content: "\ea35";
+}
+.icon-shape-sqemerald2:before {
+  content: "\ea36";
+}
+.icon-shape-sqradiant2:before {
+  content: "\ea37";
+}
+.icon-Shipment-Master3:before {
+  content: "\ea38";
+}
+.icon-Shipment-Update3:before {
+  content: "\ea39";
+}
+.icon-skype2:before {
+  content: "\ea3a";
+}
+.icon-Solitaire-Round2:before {
+  content: "\ea3b";
+}
+.icon-Stock-Manage2:before {
+  content: "\ea3c";
+}
+.icon-Stock-Share-View2:before {
+  content: "\ea3d";
+}
+.icon-TwinStone2:before {
+  content: "\ea3e";
+}
+.icon-Upload-Images3:before {
+  content: "\ea3f";
+}
+.icon-Upload-Popup3:before {
+  content: "\ea40";
+}
+.icon-User-Activation3:before {
+  content: "\ea41";
+}
+.icon-User-Details2:before {
+  content: "\ea42";
+}
+.icon-Web-Track4:before {
+  content: "\ea43";
+}
+.icon-Whatsapp3:before {
+  content: "\ea44";
+}
+.icon-wishlist2:before {
+  content: "\ea45";
+}
+.icon-change-password:before {
+  content: "\ea46";
+}
+.icon-deal-of-the-day:before {
+  content: "\ea47";
+}
+.icon-fancy-stone:before {
+  content: "\ea48";
+}
+.icon-modify-search1:before {
+  content: "\ea49";
+}
+.icon-my-cart:before {
+  content: "\ea4a";
+}
+.icon-my-profile:before {
+  content: "\ea4b";
+}
+.icon-my-purchase:before {
+  content: "\ea4c";
+}
+.icon-new-arrival:before {
+  content: "\ea4d";
+}
+.icon-saved-search:before {
+  content: "\ea4e";
+}
+.icon-specific-search:before {
+  content: "\ea4f";
+}
+.icon-specific-search1:before {
+  content: "\ea50";
+}
+.icon-tripal-EX-search:before {
+  content: "\ea51";
+}
+.icon-twin-stone:before {
+  content: "\ea52";
+}
+.icon-about-us-entry:before {
+  content: "\ea53";
+}
+.icon-client-activation:before {
+  content: "\ea54";
+}
+.icon-client-list:before {
+  content: "\ea55";
+}
+.icon-confirm-stone1:before {
+  content: "\ea56";
+}
+.icon-contact-us-entry:before {
+  content: "\ea57";
+}
+.icon-deal-of-the-day--detail:before {
+  content: "\ea58";
+}
+.icon-deal-of-the-day1:before {
+  content: "\ea59";
+}
+.icon-discount-master:before {
+  content: "\ea5a";
+}
+.icon-Guest-history:before {
+  content: "\ea5b";
+}
+.icon-hit-counter:before {
+  content: "\ea5c";
+}
+.icon-inquiry:before {
+  content: "\ea5d";
+}
+.icon-mail-password:before {
+  content: "\ea5e";
+}
+.icon-manufacturing-entry:before {
+  content: "\ea5f";
+}
+.icon-news:before {
+  content: "\ea60";
+}
+.icon-pop-up-banner:before {
+  content: "\ea61";
+}
+.icon-quick-contact:before {
+  content: "\ea62";
+}
+.icon-remove-stone:before {
+  content: "\ea63";
+}
+.icon-search-history:before {
+  content: "\ea64";
+}
+.icon-size-wise-discount:before {
+  content: "\ea65";
+}
+.icon-cart-with-user:before {
+  content: "\ea66";
+}
+.icon-filter1:before {
+  content: "\ea67";
+}
+.icon-logout1:before {
+  content: "\ea68";
+}
+.icon-my-cart1:before {
+  content: "\ea69";
+}
+.icon-my-purchase1:before {
+  content: "\ea6a";
+}
+.icon-open-search-menu:before {
+  content: "\ea6b";
+}
+.icon-pdf:before {
+  content: "\ea6c";
+}
+.icon-side-menu:before {
+  content: "\ea6d";
+}
+.icon-change-password1:before {
+  content: "\ea6e";
+}
+.icon-deal-of-the-day2:before {
+  content: "\ea6f";
+}
+.icon-My-Purchase:before {
+  content: "\ea70";
+}
+.icon-saved-search1:before {
+  content: "\ea71";
+}
+.icon-SpecificSearch:before {
+  content: "\ea72";
+}
+.icon-Fancy-Stone1:before {
+  content: "\ea73";
+}
+.icon-matching-pair:before {
+  content: "\ea74";
+}
+.icon-My-cart:before {
+  content: "\ea75";
+}
+.icon-my-purchage:before {
+  content: "\ea76";
+}
+.icon-New-Arrival5:before {
+  content: "\ea77";
+}
+.icon-SpecificSearch_a:before {
+  content: "\ea78";
+}
+.icon-AdvanceSearch:before {
+  content: "\ea79";
+}
+.icon-ico_add_stone:before {
+  content: "\ea7a";
+}
+.icon-ico_cart_list:before {
+  content: "\ea7b";
+}
+.icon-ico_compare_stones:before {
+  content: "\ea7c";
+}
+.icon-ico_confirm_stone:before {
+  content: "\ea7d";
+}
+.icon-ico_confirmation_list:before {
+  content: "\ea7e";
+}
+.icon-ico_download:before {
+  content: "\ea7f";
+}
+.icon-Logout_1:before {
+  content: "\ea80";
+}
+.icon-Reset2:before {
+  content: "\ea81";
+}
+.icon-SavedSearch1:before {
+  content: "\ea82";
+}
+.icon-Search2:before {
+  content: "\ea83";
+}
+.icon-add-stone1:before {
+  content: "\ea84";
+}
+.icon-AdvanceSearch1:before {
+  content: "\ea85";
+}
+.icon-AllShape1:before {
+  content: "\ea86";
+}
+.icon-baguette:before {
+  content: "\ea87";
+}
+.icon-camera1:before {
+  content: "\ea88";
+}
+.icon-cart-list1:before {
+  content: "\ea89";
+}
+.icon-CBrilliant2:before {
+  content: "\ea8a";
+}
+.icon-certificate:before {
+  content: "\ea8b";
+}
+.icon-Client-List5:before {
+  content: "\ea8c";
+}
+.icon-confirmation-list1:before {
+  content: "\ea8d";
+}
+.icon-confirm-stone2:before {
+  content: "\ea8e";
+}
+.icon-Cushion2:before {
+  content: "\ea8f";
+}
+.icon-download1:before {
+  content: "\ea90";
+}
+.icon-email:before {
+  content: "\ea91";
+}
+.icon-Emerald2:before {
+  content: "\ea92";
+}
+.icon-excel1:before {
+  content: "\ea93";
+}
+.icon-Fancy2:before {
+  content: "\ea94";
+}
+.icon-FancyStone2:before {
+  content: "\ea95";
+}
+.icon-ForgotPassword:before {
+  content: "\ea96";
+}
+.icon-Heart2:before {
+  content: "\ea97";
+}
+.icon-ico_compare_stones1:before {
+  content: "\ea98";
+}
+.icon-ico_confirm_stone1:before {
+  content: "\ea99";
+}
+.icon-image:before {
+  content: "\ea9a";
+}
+.icon-LgRadiant2:before {
+  content: "\ea9b";
+}
+.icon-Logout_11:before {
+  content: "\ea9c";
+}
+.icon-Marquise2:before {
+  content: "\ea9d";
+}
+.icon-movie:before {
+  content: "\ea9e";
+}
+.icon-MyCart:before {
+  content: "\ea9f";
+}
+.icon-MyConfirmation1:before {
+  content: "\eaa0";
+}
+.icon-Oval2:before {
+  content: "\eaa1";
+}
+.icon-Pear2:before {
+  content: "\eaa2";
+}
+.icon-Princess2:before {
+  content: "\eaa3";
+}
+.icon-print:before {
+  content: "\eaa4";
+}
+.icon-quicksearch .path1:before {
+  content: "\eaa5";
+  color: rgb(25, 25, 25);
+}
+.icon-quicksearch .path2:before {
+  content: "\eaa6";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-quicksearch .path3:before {
+  content: "\eaa7";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-quicksearch .path4:before {
+  content: "\eaa8";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-quicksearch .path5:before {
+  content: "\eaa9";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-quicksearch .path6:before {
+  content: "\eaaa";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-quicksearch .path7:before {
+  content: "\eaab";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-quicksearch .path8:before {
+  content: "\eaac";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-quicksearch .path9:before {
+  content: "\eaad";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-remove:before {
+  content: "\eaae";
+}
+.icon-Reset3:before {
+  content: "\eaaf";
+}
+.icon-review:before {
+  content: "\eab0";
+}
+.icon-Round2:before {
+  content: "\eab1";
+}
+.icon-Search3:before {
+  content: "\eab2";
+}
+.icon-SpecificSearch1:before {
+  content: "\eab3";
+}
+.icon-SqEmerald2:before {
+  content: "\eab4";
+}
+.icon-SqRadiant2:before {
+  content: "\eab5";
+}
+.icon-UserProfile1:before {
+  content: "\eab6";
+}
+.icon-Web-Tracking:before {
+  content: "\eab7";
+}
+.icon-best-price-diamond:before {
+  content: "\eab8";
+}
+.icon-cancel-button1:before {
+  content: "\eab9";
+}
+.icon-close-square-button:before {
+  content: "\eaba";
+}
+.icon-delet_a:before {
+  content: "\eabb";
+}
+.icon-Diamond-Search5:before {
+  content: "\eabc";
+}
+.icon-dollar-symbol:before {
+  content: "\eabd";
+}
+.icon-jewelry-stone:before {
+  content: "\eabe";
+}
+.icon-cart:before {
+  content: "\eabf";
+}
+.icon-changeprofile:before {
+  content: "\eac0";
+}
+.icon-ConfirmationStatus:before {
+  content: "\eac1";
+}
+.icon-diamonddemand:before {
+  content: "\eac2";
+}
+.icon-DiamondSearch:before {
+  content: "\eac3";
+}
+.icon-newarrival:before {
+  content: "\eac4";
+}
+.icon-ParcelDiamonds:before {
+  content: "\eac5";
+}
+.icon-QuickSearch:before {
+  content: "\eac6";
+}
+.icon-TwinStone3:before {
+  content: "\eac7";
+}
+.icon-Album:before {
+  content: "\eac8";
+}
+.icon-Appointmen:before {
+  content: "\eac9";
+}
+.icon-clientlist:before {
+  content: "\eaca";
+}
+.icon-ConfirmationStatus1:before {
+  content: "\eacb";
+}
+.icon-diamonddemand1:before {
+  content: "\eacc";
+}
+.icon-discMaster:before {
+  content: "\eacd";
+}
+.icon-ico_welcome_text:before {
+  content: "\eace";
+}
+.icon-inquiry1:before {
+  content: "\eacf";
+}
+.icon-news1:before {
+  content: "\ead0";
+}
+.icon-parcel:before {
+  content: "\ead1";
+}
+.icon-parceldiamond:before {
+  content: "\ead2";
+}
+.icon-removestone:before {
+  content: "\ead3";
+}
+.icon-sendmail:before {
+  content: "\ead4";
+}
+.icon-uploadimage:before {
+  content: "\ead5";
+}
+.icon-uploadpopup:before {
+  content: "\ead6";
+}
+.icon-useractivation:before {
+  content: "\ead7";
+}
+.icon-user-details:before {
+  content: "\ead8";
+}
+.icon-webtrack:before {
+  content: "\ead9";
+}
+.icon-Appointment-View4:before {
+  content: "\eada";
+}
+.icon-Change-Profile4:before {
+  content: "\eadb";
+}
+.icon-Client-List6:before {
+  content: "\eadc";
+}
+.icon-Confirm-Permission5:before {
+  content: "\eadd";
+}
+.icon-Confirm-Report4:before {
+  content: "\eade";
+}
+.icon-Confirm-Stone5:before {
+  content: "\eadf";
+}
+.icon-Create-Albums4:before {
+  content: "\eae0";
+}
+.icon-Diamond-Demands4:before {
+  content: "\eae1";
+}
+.icon-Diamond-Inquiry4:before {
+  content: "\eae2";
+}
+.icon-Diamond-Search6:before {
+  content: "\eae3";
+}
+.icon-Discount-Master5:before {
+  content: "\eae4";
+}
+.icon-Download-Inventory5:before {
+  content: "\eae5";
+}
+.icon-Email-Configuration4:before {
+  content: "\eae6";
+}
+.icon-Loose-Parcel-Add1:before {
+  content: "\eae7";
+}
+.icon-Loose-Parcel-Inquiry-View1:before {
+  content: "\eae8";
+}
+.icon-Loose-Parcel-Master1:before {
+  content: "\eae9";
+}
+.icon-My-Basket5:before {
+  content: "\eaea";
+}
+.icon-My-Order-Status4:before {
+  content: "\eaeb";
+}
+.icon-New-Arrival6:before {
+  content: "\eaec";
+}
+.icon-News5:before {
+  content: "\eaed";
+}
+.icon-Parcel-Diamond4:before {
+  content: "\eaee";
+}
+.icon-Place-Your-Demand5:before {
+  content: "\eaef";
+}
+.icon-Quick-Search5:before {
+  content: "\eaf0";
+}
+.icon-Remove-Stone4:before {
+  content: "\eaf1";
+}
+.icon-Send-Email4:before {
+  content: "\eaf2";
+}
+.icon-Shipment-Master4:before {
+  content: "\eaf3";
+}
+.icon-Shipment-Notification1:before {
+  content: "\eaf4";
+}
+.icon-Shipment-Update4:before {
+  content: "\eaf5";
+}
+.icon-Twin-Stone2:before {
+  content: "\eaf6";
+}
+.icon-Upload-Images4:before {
+  content: "\eaf7";
+}
+.icon-Upload-Popup4:before {
+  content: "\eaf8";
+}
+.icon-User-Activation4:before {
+  content: "\eaf9";
+}
+.icon-User-Details3:before {
+  content: "\eafa";
+}
+.icon-Web-Track5:before {
+  content: "\eafb";
+}
+.icon-Address1:before {
+  content: "\eafc";
+}
+.icon-AllShape2:before {
+  content: "\eafd";
+}
+.icon-arrow1:before {
+  content: "\eafe";
+}
+.icon-Ashoka1:before {
+  content: "\eaff";
+}
+.icon-Asscher1:before {
+  content: "\eb00";
+}
+.icon-Bid-Config-Master3:before {
+  content: "\eb01";
+}
+.icon-Bid-Offer-View3:before {
+  content: "\eb02";
+}
+.icon-Bid-Stock-View3:before {
+  content: "\eb03";
+}
+.icon-call1:before {
+  content: "\eb04";
+}
+.icon-camera2:before {
+  content: "\eb05";
+}
+.icon-cart-list2:before {
+  content: "\eb06";
+}
+.icon-cart-with-user1:before {
+  content: "\eb07";
+}
+.icon-CBrilliant3:before {
+  content: "\eb08";
+}
+.icon-Change-Password1:before {
+  content: "\eb09";
+}
+.icon-close1:before {
+  content: "\eb0a";
+}
+.icon-close-round1:before {
+  content: "\eb0b";
+}
+.icon-Cushion3:before {
+  content: "\eb0c";
+}
+.icon-Cushion-Brilliant1:before {
+  content: "\eb0d";
+}
+.icon-Cushion-Plasma1:before {
+  content: "\eb0e";
+}
+.icon-cutting1:before {
+  content: "\eb0f";
+}
+.icon-Deal-of-The-Day:before {
+  content: "\eb10";
+}
+.icon-Diamond-Inquiry5:before {
+  content: "\eb11";
+}
+.icon-down-arrow1:before {
+  content: "\eb12";
+}
+.icon-Education1:before {
+  content: "\eb13";
+}
+.icon-Emerald3:before {
+  content: "\eb14";
+}
+.icon-Environmental1:before {
+  content: "\eb15";
+}
+.icon-facebook1:before {
+  content: "\eb16";
+}
+.icon-Fancy-Stone2:before {
+  content: "\eb17";
+}
+.icon-Fancy3:before {
+  content: "\eb18";
+}
+.icon-FancyStone3:before {
+  content: "\eb19";
+}
+.icon-fax1:before {
+  content: "\eb1a";
+}
+.icon-for-employees1:before {
+  content: "\eb1b";
+}
+.icon-google-plus1:before {
+  content: "\eb1c";
+}
+.icon-grading1:before {
+  content: "\eb1d";
+}
+.icon-Health1:before {
+  content: "\eb1e";
+}
+.icon-Heart3:before {
+  content: "\eb1f";
+}
+.icon-ico_Allshape:before {
+  content: "\eb20";
+}
+.icon-ico_back:before {
+  content: "\eb21";
+}
+.icon-ico_Camera:before {
+  content: "\eb22";
+}
+.icon-ico_CameraA:before {
+  content: "\eb23";
+}
+.icon-ico_Certificate:before {
+  content: "\eb24";
+}
+.icon-ico_ChangePassword:before {
+  content: "\eb25";
+}
+.icon-ico_Check:before {
+  content: "\eb26";
+}
+.icon-ico_CheckUI:before {
+  content: "\eb27";
+}
+.icon-ico_Cushion:before {
+  content: "\eb28";
+}
+.icon-ico_Emerald:before {
+  content: "\eb29";
+}
+.icon-ico_Heart:before {
+  content: "\eb2a";
+}
+.icon-ico_HeartArrow:before {
+  content: "\eb2b";
+}
+.icon-ico_logout:before {
+  content: "\eb2c";
+}
+.icon-ico_Mail:before {
+  content: "\eb2d";
+}
+.icon-ico_Marquise:before {
+  content: "\eb2e";
+}
+.icon-ico_Memo:before {
+  content: "\eb2f";
+}
+.icon-ico_MemoList:before {
+  content: "\eb30";
+}
+.icon-ico_Modify:before {
+  content: "\eb31";
+}
+.icon-ico_Movie:before {
+  content: "\eb32";
+}
+.icon-ico_MovieHD:before {
+  content: "\eb33";
+}
+.icon-ico_MovieHDA:before {
+  content: "\eb34";
+}
+.icon-ico_Myconfirmation:before {
+  content: "\eb35";
+}
+.icon-ico_Myprofile:before {
+  content: "\eb36";
+}
+.icon-ico_Oval:before {
+  content: "\eb37";
+}
+.icon-ico_Pear:before {
+  content: "\eb38";
+}
+.icon-ico_Princess:before {
+  content: "\eb39";
+}
+.icon-ico_Print:before {
+  content: "\eb3a";
+}
+.icon-ico_Radiant:before {
+  content: "\eb3b";
+}
+.icon-ico_ResetPerameter:before {
+  content: "\eb3c";
+}
+.icon-ico_Round:before {
+  content: "\eb3d";
+}
+.icon-ico_SearchPerameter:before {
+  content: "\eb3e";
+}
+.icon-ico_Specificsearch:before {
+  content: "\eb3f";
+}
+.icon-ico_SqEmerald:before {
+  content: "\eb40";
+}
+.icon-ico_SqRadiant:before {
+  content: "\eb41";
+}
+.icon-ico_Twinstones:before {
+  content: "\eb42";
+}
+.icon-ico_VerifyCerti:before {
+  content: "\eb43";
+}
+.icon-ico_Website:before {
+  content: "\eb44";
+}
+.icon-icon-Ashoka1:before {
+  content: "\eb45";
+}
+.icon-icon-SqEmerald1:before {
+  content: "\eb46";
+}
+.icon-icon-Square-Radiant1:before {
+  content: "\eb47";
+}
+.icon-inquiry2:before {
+  content: "\eb48";
+}
+.icon-inscription1:before {
+  content: "\eb49";
+}
+.icon-LgRadiant3:before {
+  content: "\eb4a";
+}
+.icon-logout2:before {
+  content: "\eb4b";
+}
+.icon-Loose-Parcel-Inquiry-View2:before {
+  content: "\eb4c";
+}
+.icon-mail1:before {
+  content: "\eb4d";
+}
+.icon-Marquise3:before {
+  content: "\eb4e";
+}
+.icon-menu1:before {
+  content: "\eb4f";
+}
+.icon-more1:before {
+  content: "\eb50";
+}
+.icon-My-Cart:before {
+  content: "\eb51";
+}
+.icon-My-Profile:before {
+  content: "\eb52";
+}
+.icon-My-Purchase1:before {
+  content: "\eb53";
+}
+.icon-New-Arrival7:before {
+  content: "\eb54";
+}
+.icon-Oval3:before {
+  content: "\eb55";
+}
+.icon-Pear3:before {
+  content: "\eb56";
+}
+.icon-pinterest1:before {
+  content: "\eb57";
+}
+.icon-plus1:before {
+  content: "\eb58";
+}
+.icon-Polishing1:before {
+  content: "\eb59";
+}
+.icon-Princess3:before {
+  content: "\eb5a";
+}
+.icon-Reset4:before {
+  content: "\eb5b";
+}
+.icon-Rose-Cut1:before {
+  content: "\eb5c";
+}
+.icon-Round3:before {
+  content: "\eb5d";
+}
+.icon-Save-search:before {
+  content: "\eb5e";
+}
+.icon-Saved-Search:before {
+  content: "\eb5f";
+}
+.icon-Search4:before {
+  content: "\eb60";
+}
+.icon-sourcing1:before {
+  content: "\eb61";
+}
+.icon-Specific-Search1:before {
+  content: "\eb62";
+}
+.icon-SqEmerald3:before {
+  content: "\eb63";
+}
+.icon-SqRadiant3:before {
+  content: "\eb64";
+}
+.icon-Square-Emerald1:before {
+  content: "\eb65";
+}
+.icon-Square-Radiant1:before {
+  content: "\eb66";
+}
+.icon-Stock-Manage3:before {
+  content: "\eb67";
+}
+.icon-Stock-Share-View3:before {
+  content: "\eb68";
+}
+.icon-Today-Stock:before {
+  content: "\eb69";
+}
+.icon-Tripal-EX-Search:before {
+  content: "\eb6a";
+}
+.icon-Twin-Stone3:before {
+  content: "\eb6b";
+}
+.icon-twitter1:before {
+  content: "\eb6c";
+}
+.icon-video1:before {
+  content: "\eb6d";
+}
+.icon-Wish-List:before {
+  content: "\eb6e";
+}
+.icon-youtube1:before {
+  content: "\eb6f";
+}

@@ -1,0 +1,95 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 col-12 pl-0">
+      <div [formGroup]="form1">
+        <h6 class="part-title">Designer</h6>
+        <div class="dov-list-group">
+          <label formArrayName="orders" *ngFor="let order of ordersFormArray.controls; let i = index"
+            class="dov-list-item">
+            <input type="checkbox" [formControlName]="i" (change)="DesignCodeChange()">
+            {{ordersData[i].name}}
+          </label>
+        </div>
+      </div>
+      <div [formGroup]="form2">
+        <h6 class="part-title">Category</h6>
+        <div class="dov-list-group">
+          <label formArrayName="category" *ngFor="let cat of CategoryFormArray.controls; let i = index"
+            class="dov-list-item">
+            <input type="checkbox" [formControlName]="i" (change)="CategoryCodeChange()">
+            {{CategoryData[i].name}}
+          </label>
+        </div>
+      </div>
+      <div *ngIf="subcat" [formGroup]="form3">
+        <h6 class="part-title">Sub Category</h6>
+        <div class="dov-list-group">
+          <label formArrayName="subcategory" *ngFor="let subcat of SubCategoryFormArray.controls; let i = index"
+            class="dov-list-item">
+            <input type="checkbox" [formControlName]="i" (change)="SubCategoryCodeChange()">
+            {{SubCategoryData[i].name}}
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-10 col-12">
+      <div class="row mx-0">
+        <div id="WhiteDim" class="w-100 my-3">
+        </div>
+      </div>
+      <div class="row my-3 mx-0">
+        <div class="doc-form-fields">
+          <mat-form-field appearance="outline" ngDefaultControl class="doc-ff-item">
+            <mat-label>DesignCode</mat-label>
+            <input matInput name="nm" [(ngModel)]="NAME" disabled>
+          </mat-form-field>
+          <mat-form-field appearance="outline" (click)="dob.open()">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="dob" [readonly]="true" [(ngModel)]="DATE" disabled>
+            <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+            <mat-datepicker #dob></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="example-full-width doc-ff-item">
+            <input type="text" matInput [formControl]="Designer" [matAutocomplete]="auto2" placeholder="Designer"
+              disabled>
+            <mat-autocomplete name="nm" #auto2="matAutocomplete">
+              <mat-option *ngFor="let option of DesignerCode" [value]="option.Emp_Name">
+                {{ option.Emp_Name }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="example-full-width doc-ff-item">
+            <input type="text" matInput [formControl]="Category" [matAutocomplete]="auto3" placeholder="Category">
+            <mat-autocomplete name="nm" #auto3="matAutocomplete" (optionSelected)="fillsubcat()">
+              <mat-option *ngFor="let option of CategoryCode" [value]="option.Category_Name">
+                {{ option.Category_Name }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="example-full-width doc-ff-item">
+            <input type="text" matInput [formControl]="SubCategory" [matAutocomplete]="auto4" placeholder="SubCategory">
+            <mat-autocomplete name="nm" #auto4="matAutocomplete">
+              <mat-option *ngFor="let option of SubCategoryCode" [value]="option.Sub_Category_Name">
+                {{ option.Sub_Category_Name }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        <div class="doc-form-btn">
+          <button *ngIf="NEWADD" id="add" class="btn ad-btn-display" matTooltip="ADD" (click)="add()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="row mx-0" id="DesignImage">
+
+      </div>
+    </div>
+  </div>
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+    <div class="la-ball-scale-ripple-multiple la-2x">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </ngx-spinner>

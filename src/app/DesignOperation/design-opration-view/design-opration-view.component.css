@@ -1,0 +1,19 @@
+
+.carousel-area .car-content-holder {
+    padding: 10px;
+    border: 1px solid #333;
+    padding-bottom: 0;
+  }
+  
+  
+  .car-txt-holder p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    height: 30px;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  

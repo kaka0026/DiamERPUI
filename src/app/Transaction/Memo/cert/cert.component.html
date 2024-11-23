@@ -1,0 +1,229 @@
+<div class="container-fluid">
+
+  <div class="row section-head-row align-items-center mt-minus">
+    <div class="col-6 pl-0">
+      <h5 class="section-title">
+        DIAMONDS - CERTIFIED
+      </h5>
+    </div>
+    <div class="col-md-6 text-right">
+      <div class="row">
+        <button class="btn filt-btn ml-auto " matTooltip="CLOSE" (click)="Close()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <button id="save" class="btn filt-btn  mr-0" matTooltip="SAVE" (click)="Save()">
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-3">
+
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Category</mat-label>
+        <input matInput name="nm" [(ngModel)]="Category" disabled>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field class="example-full-width">
+        <mat-label>Material</mat-label>
+        <input type="text" matInput [formControl]="Material" [(ngModel)]="MaterialCode" [matAutocomplete]="auto1">
+        <mat-autocomplete name="nm" #auto1="matAutocomplete" (optionSelected)="SelectMaterialOption();">
+          <mat-option *ngFor="let lot of filteredMaterial | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field class="example-full-width">
+        <mat-label>Shape</mat-label>
+        <input type="text" matInput [formControl]="Shape" [(ngModel)]="ShapeCode" [matAutocomplete]="auto2">
+        <mat-autocomplete name="nm" #auto2="matAutocomplete" (optionSelected)="SelectShapeOption();">
+          <mat-option *ngFor="let lot of filteredShape | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <div class="row align-items-center">
+
+    <div id="lb" class="col-md-4 col-12  dol-input mb-1 pl-0" style="display: flex;">
+      <mat-form-field class="example-full-width">
+        <mat-label>Lab</mat-label>
+        <input type="text" matInput [formControl]="Lab" [(ngModel)]="LabCode" [matAutocomplete]="auto5">
+        <mat-autocomplete name="nm" #auto5="matAutocomplete">
+          <mat-option *ngFor="let lot of filteredLab | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div id="certno" class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Certificate No</mat-label>
+        <input matInput name="nm" [(ngModel)]="CertificateNo" style="text-align: right !important;"
+          [disabled]="Disbled">
+      </mat-form-field>
+    </div>
+
+    <div id="certno" class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>WT</mat-label>
+        <input matInput name="nm" [disabled]="Disbled" [(ngModel)]="WT" style="text-align: right !important;"
+          (keyup)="ChnagePriceCal() ;"
+          onkeypress=' return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <div class="row align-items-center my-3">
+
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field class="example-full-width">
+        <mat-label>Color</mat-label>
+        <input type="text" matInput [formControl]="Color" [(ngModel)]="ColorCode" [matAutocomplete]="auto3">
+        <mat-autocomplete name="nm" #auto3="matAutocomplete" (optionSelected)="SelectColorOption();">
+          <mat-option *ngFor="let lot of filteredColor | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field class="example-full-width">
+        <mat-label>Clarity</mat-label>
+        <input type="text" matInput [formControl]="Clarity" [(ngModel)]="ClarityCode" [matAutocomplete]="auto4">
+        <mat-autocomplete name="nm" #auto4="matAutocomplete" (optionSelected)="SelectClarityOption();">
+          <mat-option *ngFor="let lot of filteredClarity | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field class="example-full-width">
+        <mat-label>Fluoro</mat-label>
+        <input type="text" matInput [formControl]="Floro" [(ngModel)]="FloroCode" [matAutocomplete]="auto7">
+        <mat-autocomplete name="nm" #auto7="matAutocomplete" (optionSelected)="SelectFloOption();">
+          <mat-option *ngFor="let lot of filteredFloro | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <div class="row align-items-center">
+
+    <div id="certno" class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Rap Price</mat-label>
+        <input matInput name="nm" [(ngModel)]="RapPrice" [disabled]="Disbled" style="text-align: right !important;"
+          onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+      </mat-form-field>
+    </div>
+
+    <div id="certno" class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Disc</mat-label>
+        <input matInput name="nm" [(ngModel)]="Disc" [disabled]="Disbled" style="text-align: right !important;"
+          onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+      </mat-form-field>
+    </div>
+
+    <div id="certno" class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Unit</mat-label>
+        <input matInput name="nm" [(ngModel)]="Unit" disabled>
+      </mat-form-field>
+    </div>
+
+  </div>
+
+
+  <div class="row align-items-center">
+
+
+    <div class="col-md-2 col-12  dol-input mb-1 pl-0">
+      <mat-radio-group [(ngModel)]="selectedPriceUnit" (change)="ChnagePriceCal()" style="display: flex;"
+        [disabled]="Disbled">
+        <mat-radio-button value="Rs">₹</mat-radio-button>
+        <mat-radio-button value="Dol">$ Conv</mat-radio-button>
+      </mat-radio-group>
+
+
+    </div>
+    <div class="col-md-2 col-12  dol-input mb-1">
+      <mat-form-field appearance="outline" ngDefaultControl id="pr" style="display: none !important;">
+        <input matInput name="nm" [disabled]="Disbled" [(ngModel)]="Dollar" (keyup)="ChnagePriceCal() ;"
+          style="text-align: right !important;"
+          onkeypress=' return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+      </mat-form-field>
+    </div>
+
+
+    <div id="lb" class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Ask Price/UNIT</mat-label>
+        <input matInput name="nm" [(ngModel)]="PRUN" [disabled]="Disbled" style="text-align: right !important;"
+          (keyup)="ChnagePriceCal() ;"
+          onkeypress=' return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'
+          (blur)=" ChnagePriceCal();">
+      </mat-form-field>
+    </div>
+
+    <div id="certno" class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Total Amount</mat-label>
+        <input matInput disabled name="nm" [(ngModel)]="TAmount" style="text-align: right !important;">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row align-items-center">
+    <div class="col-md-2 col-12  dol-input mb-1 pl-0">
+      <mat-radio-group [(ngModel)]="selectedPurpose" (change)="ChnagePricePurpose()" style="display: flex;"
+        [disabled]="Disbled">
+        <mat-radio-button value="STOCK">Stock</mat-radio-button>
+        <mat-radio-button value="ORDER">Order</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col-md-2 col-12  dol-input mb-1 pl-0"></div>
+
+    <div id="ord" class="col-md-4 col-12  dol-input mb-1" style="display: none;">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Order No</mat-label>
+        <input matInput name="nm" [(ngModel)]="OrderNo" [disabled]="Disbled">
+      </mat-form-field>
+    </div>
+
+    <div id="certno" class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Comment</mat-label>
+        <input matInput name="nm" [(ngModel)]="Comment" [disabled]="Disbled">
+      </mat-form-field>
+    </div>
+  </div>
+
+</div>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>

@@ -1,0 +1,24 @@
+<div class="main-container">
+  <app-header></app-header>
+  <main class="l-main">
+
+    <div class="page-content">
+
+      <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)"
+        (selectedTabChange)="tabChanged($event)">
+
+        <mat-tab *ngFor="let tab of dynamicTabs; let index = index" label="{{tab.label}}">
+          <ng-template mat-tab-label>
+            <div style="padding: 10px;" (auxclick)="onClick($event,index)">{{tab.label}}</div>
+            <button style="color:black" matTooltip="Close" mat-icon-button (click)="removeTab(index)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </ng-template>
+          <ng-container *ngComponentOutlet="tab.component">
+          </ng-container>
+        </mat-tab>
+      </mat-tab-group>
+
+    </div>
+  </main>
+</div>

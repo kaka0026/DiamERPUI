@@ -1,0 +1,95 @@
+<div class="filt-row" id="addcontrol" style="display: none;">
+  <mat-form-field appearance="outline" ngDefaultControl>
+    <mat-label>Code</mat-label>
+    <input id="code" matInput name="nm" [(ngModel)]="CODE" (change)="CheckCode();"
+      (ngModelChange)="CODE = $event.toUpperCase()">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" ngDefaultControl>
+    <mat-label>Name</mat-label>
+    <input id="text" matInput name="nm" [(ngModel)]="NAME" (ngModelChange)="NAME = $event.toUpperCase()">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" ngDefaultControl>
+    <mat-label>Email</mat-label>
+    <input matInput name="nm" (change)="validEmailcheck()" [(ngModel)]="EMAIL">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" ngDefaultControl>
+    <mat-label>Password</mat-label>
+    <input id="pass" [type]="hideEmp ? 'password' : 'text'" matInput name="nm" [(ngModel)]="PASS">
+    <mat-icon matSuffix style="cursor: pointer;" (click)="hideEmp = !hideEmp">
+      {{hideEmp ? 'visibility_off' : 'visibility'}}
+    </mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Department</mat-label>
+    <input type="text" placeholder="Select Department" aria-label="Assignee" matInput [(ngModel)]="DepartmentCode"
+      [formControl]="Department" [matAutocomplete]="auto2">
+    <mat-autocomplete #auto2="matAutocomplete">
+      <mat-option *ngFor="let lot of filteredlots | async" [value]="lot.name">
+        <span>{{ lot.name }}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Designation</mat-label>
+    <input type="text" placeholder="Select Designation" aria-label="Assignee1" matInput [(ngModel)]="DesignationCode"
+      [formControl]="Designation" [matAutocomplete]="auto3">
+    <mat-autocomplete #auto3="matAutocomplete">
+      <mat-option *ngFor="let lot1 of filteredDesignation | async" [value]="lot1.name">
+        <span>{{ lot1.name }}</span>
+        <span style="float: right; color: gray; font-size: 3mm;">{{ lot1.sortname }}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Category</mat-label>
+    <input type="text" placeholder="Select Category" aria-label="Assignee3" matInput [(ngModel)]="CategoryCode"
+      [formControl]="Category" [matAutocomplete]="auto4" (ngModelChange)="CategoryCode = $event.toUpperCase()">
+    <mat-autocomplete #auto4="matAutocomplete">
+      <mat-option *ngFor="let lot3 of filteredCategory | async" [value]="lot3.name">
+        <span>{{ lot3.name }}</span>
+        <span style="float: right; color: gray; font-size: 3mm;">{{ lot3.code }}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-checkbox *ngIf="CHECK" class="example-margin" [(ngModel)]="chkIsActive">Is Active?</mat-checkbox>
+
+</div>
+<div class="flt-btn-group" id="addcontrol1" style="display: none;">
+  <div class="d-flex justify-content-end mt-3">
+    <button class="btn filt-btn" matTooltip="Back To List" (click)="List()">
+      <mat-icon>list</mat-icon>
+    </button>
+    <button class="btn filt-btn" matTooltip="SAVE" (click)="Save()">
+      <mat-icon>save</mat-icon>
+    </button>
+    <button class="btn filt-btn" matTooltip="CLEAR" (click)="Clear()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+</div>
+<button *ngIf="NEWADD" id="add" matTooltip="ADD" class="btn ad-btn-display" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+<div id="grid" class="container">
+  <div class="row">
+    <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine" [defaultColDef]="defaultColDef"
+      [columnDefs]="columnDefs" (gridReady)="onGridReady($event)" (rowClicked)='onGridRowClicked($event)'
+      [animateRows]="true" [pagination]="true" [overlayLoadingTemplate]="loadingTemplate"
+      [overlayNoRowsTemplate]="noRowsTemplate">
+    </ag-grid-angular>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>

@@ -1,0 +1,236 @@
+<div class="container-fluid">
+  <div class="row section-head-row align-items-center mt-minus">
+    <div class="col-6 pl-0">
+      <h5 class="section-title">
+        Loose Certified Diamond
+      </h5>
+    </div>
+    <div class="col-md-6 text-right">
+      <div class="row">
+        <button class="btn filt-btn ml-auto " matTooltip="CLOSE" (click)="Close()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <button id="save" class="btn filt-btn  mr-0" matTooltip="SAVE" (click)="Save()">
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-2">
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Category</mat-label>
+        <input matInput name="nm" [(ngModel)]="Category" disabled>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline">
+        <mat-label>Material</mat-label>
+        <input type="text" matInput [formControl]="Material" [(ngModel)]="MaterialCode" [matAutocomplete]="auto1"
+          (ngModelChange)="MaterialCode = $event.toUpperCase();SelectMaterialOption();">
+        <mat-autocomplete name="nm" #auto1="matAutocomplete" (optionSelected)="SelectMaterialOption();">
+          <mat-option *ngFor="let lot of filteredMaterial | async" [value]="lot.name">
+            <span>{{ lot.name }}</span>
+            <span style="float: right; color: gray; font-size: 3mm;">{{ lot.code }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline">
+        <mat-label>Shape</mat-label>
+        <input type="text" matInput [formControl]="Shape" [(ngModel)]="ShapeCode" [matAutocomplete]="auto2"
+          (ngModelChange)="ShapeCode = $event.toUpperCase()">
+        <mat-autocomplete name="nm" #auto2="matAutocomplete" (optionSelected)="SelectShapeOption();">
+          <mat-option *ngFor="let lot of filteredShape | async" [value]="lot.name">
+            <span>{{ lot.name }}</span>
+            <span style="float: right; color: gray; font-size: 3mm;">{{ lot.code }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+
+  </div>
+
+  <div class="row align-items-center mt-2">
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline">
+        <mat-label>Colour Scale</mat-label>
+        <mat-select [disabled]="Disbled" [(ngModel)]="COLOURSCALE" (selectionChange)="ChnageRangeFormat()"
+          disableOptionCentering>
+          <mat-option value="WHITE">WHITE</mat-option>
+          <mat-option value="FANCY">FANCY</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline">
+        <mat-label>Color</mat-label>
+        <input type="text" matInput [formControl]="Color" [(ngModel)]="ColorCode"
+          (ngModelChange)="ColorCode = $event.toUpperCase()">
+
+      </mat-form-field>
+    </div>
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline">
+        <mat-label>Clarity</mat-label>
+        <input type="text" matInput [formControl]="Clarity" [(ngModel)]="ClarityCode"
+          (ngModelChange)="ClarityCode = $event.toUpperCase()">
+
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-2">
+    <div id="lb" class="col-md-4 col-12  dol-input mb-2 pl-0" style="display: flex;">
+      <mat-form-field appearance="outline">
+        <mat-label>Lab</mat-label>
+        <input type="text" matInput [formControl]="Lab" [(ngModel)]="LabCode" [matAutocomplete]="auto5"
+          (ngModelChange)="LabCode = $event.toUpperCase()">
+        <mat-autocomplete name="nm" #auto5="matAutocomplete">
+          <mat-option *ngFor="let lot of filteredLab | async" [value]="lot.name">
+            <span>{{ lot.name }}</span>
+            <span style="float: right; color: gray; font-size: 3mm;">{{ lot.code }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-2 ">
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Pcs</mat-label>
+        <input matInput name="nm" disabled=true [(ngModel)]="Pcs" style="text-align: right !important;"
+          appTwoDigitDecimaNumber>
+      </mat-form-field>
+    </div>
+
+
+    <div class="col-md-3 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>WT</mat-label>
+        <input matInput name="nm" [disabled]="Disbled" [(ngModel)]="Weight" style="text-align: right !important;"
+          (keyup)="AskpriceCal() ;" appTwoDigitDecimaNumber>
+      </mat-form-field>
+    </div>
+
+    <div id="certno" class="col-md-1 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Units</mat-label>
+        <mat-select disabled=true [(ngModel)]="Unit" disableOptionCentering>
+          <mat-option value="CTS">CTS</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Rap Price</mat-label>
+        <input matInput name="nm" disabled=true [(ngModel)]="RAPPRICE" style="text-align: right !important;"
+          onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-2">
+
+    <div id="certno" class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline">
+        <mat-label>Currency</mat-label>
+        <mat-select disabled=true [(ngModel)]="CURRENCY" (selectionChange)="ChnageRangeFormat1()"
+          disableOptionCentering>
+          <mat-option value="USD">USD</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field id="conversation" appearance="outline" ngDefaultControl>
+        <mat-label>Conversion Rate</mat-label>
+        <input matInput name="nm" [disabled]="Disbled" [(ngModel)]="Conversion" style="text-align: right !important;"
+          (keyup)="AskpriceCal() ;" appThreeDigitDecimaNumber>
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <div class="row align-items-center mt-2">
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Rap Discount</mat-label>
+        <input matInput name="nm" [disabled]="Disbled" [(ngModel)]="RAPDISC" style="text-align: right !important;"
+          appTwoDigitDecimaNumber>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>USD Price</mat-label>
+        <input matInput name="nm" [disabled]="Disbled" [(ngModel)]="USDPrice" style="text-align: right !important;"
+          (keyup)="AskpriceCal() ;" appThreeDigitDecimaNumber>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-2">
+    <div id="lb" class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Ask Price/UNIT</mat-label>
+        <input matInput name="nm" disabled=true [(ngModel)]="PRUN" style="text-align: right !important;"
+          appThreeDigitDecimaNumber>
+      </mat-form-field>
+    </div>
+
+    <div id="certno" class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Total Amount</mat-label>
+        <input matInput disabled name="nm" disabled=true [(ngModel)]="TAmount" style="text-align: right !important;">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-2">
+    <div id="certno" class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline">
+        <mat-label>Purpose</mat-label>
+        <mat-select [disabled]="Disbled" [(ngModel)]="selectedPurpose" (selectionChange)="ChnagePurpose()"
+          disableOptionCentering>
+          <mat-option value="STOCK">
+            Stock</mat-option>
+          <mat-option value="ORDER">
+            Order</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+    <div id="ord" class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Order No</mat-label>
+        <input [disabled]="Disbled" matInput name="nm" [(ngModel)]="OrdnerNo">
+      </mat-form-field>
+    </div>
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0"></div>
+  </div>
+
+  <div class="row align-items-center my-2">
+    <div id="certno" class="col-md-8 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Comment</mat-label>
+        <textarea matInput placeholder="Comment" name="nm" [(ngModel)]="Comment" [disabled]="Disbled"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>

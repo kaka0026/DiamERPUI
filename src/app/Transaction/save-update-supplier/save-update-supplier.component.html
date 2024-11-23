@@ -1,0 +1,485 @@
+<div class="container-fluid">
+  <div class="page-title action-btn mt-3">
+    <h1 class="page-heading"></h1>
+    <div class="flt-btn-group">
+      <button class="btn filt-btn" matTooltip="SAVE" (click)="Save()">
+        <mat-icon>save</mat-icon>
+      </button>
+      <button *ngIf="EDIT" id="clear" class="btn filt-btn" matTooltip="CLEAR" (click)="Clear()">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-3">
+      <div class="pm-profile-data">
+        <label class="pm-profile-icon" for="PicInput" style="border-radius: 160px !important;">
+          <img [src]="ProfileUplaodURL" (error)="setDefaultPic4()" class="img-fluid" alt="">
+        </label>
+        <div class="pm-pro-info">
+          <input type="file" id="PicInput" class="btn bm-up-btn d-none" title="Change Profile Picture"
+            (change)="ProPicChanged($event)">
+        </div>
+      </div>
+      <p class="dym-field">{{Name}}</p>
+    </div>
+    <div class="col-md-9">
+      <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Basic Detail">
+          <ng-template mat-tab-label>
+            Basic Detail
+          </ng-template>
+          <div class="row mt-3 mx-0">
+            <div class="col-md-6 suc-input">
+              <mat-form-field appearance="outline">
+                <mat-label>CompanyName</mat-label>
+                <input #CMPANYID matInput placeholder="Company Name" (blur)="GetClientId()" [(ngModel)]="COMPANYNAME">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 suc-input">
+              <mat-form-field appearance="outline">
+                <mat-label>SupplierID</mat-label>
+                <input matInput placeholder="ClientID" [(ngModel)]="CLIENTID" disabled>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 suc-input">
+              <div class="row">
+                <div class="col-md-9">
+                  <mat-form-field appearance="outline">
+                    <mat-label>PAN</mat-label>
+                    <input matInput placeholder="Pan No." [(ngModel)]="PAN">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-1 px-0">
+                  <label class="fu-btn" for="PicInput44">
+                    <input #paninput type="file" id="PicInput44" class="btn bm-up-btn d-none" title="Change Pan Picture"
+                      (change)="PanPicChanged($event)">
+                    <i class="icon-Upload-Images"></i>
+                  </label>
+                </div>
+                <div class="col-md-2 pr-0">
+                  <div class="pm-profile-icon" (click)="OPENIMAGE(mymodal,'PAN')">
+                    <a href="javascript:void(0)">
+                      <img [src]="PanfileUplaodURL" class="img-fluid" (error)="setDefaultPic3()"
+                        alt="./../../../assets/images/No-Image.jpg">
+                    </a>
+                  </div>
+                  <button class="fc-icon-x btn filt-btn" mat-mini-fab color="primary"
+                    (click)="delete('pan', paninput)">x</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 suc-input">
+              <div class="row">
+                <div class="col-md-9">
+                  <mat-form-field appearance="outline">
+                    <mat-label>GST</mat-label>
+                    <input matInput placeholder="Gst No." [(ngModel)]="GST">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-1 px-0">
+                  <label class="fu-btn" for="PicInput55">
+                    <input #gstinput type="file" id="PicInput55" class="btn bm-up-btn d-none" title="Change Gst Picture"
+                      (change)="GstPicChanged($event)">
+                    <i class="icon-Upload-Images"></i>
+                  </label>
+                </div>
+                <div class="col-md-2 pr-0">
+                  <div class="pm-profile-icon" (click)="OPENIMAGE(mymodal,'GST')">
+                    <a href="javascript:void(0)">
+                      <img [src]="GstfileUplaodURL" class="img-fluid" (error)="setDefaultPic2()"
+                        alt="./../../../assets/images/No-Image.jpg">
+                    </a>
+                  </div>
+                  <button class="fc-icon-x btn filt-btn" mat-mini-fab color="primary"
+                    (click)="delete('gst', gstinput)">x</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 suc-input">
+              <div class="row align-items-center">
+                <div class="col-md-12 ">
+                  <mat-form-field appearance="outline" class="example-full-width">
+                    <input type="text" matInput [formControl]="Broker" [(ngModel)]="BrokerCode" placeholder="Broker"
+                      [matAutocomplete]="auto2">
+                    <mat-autocomplete name="nm" #auto2="matAutocomplete">
+                      <mat-option *ngFor="let lot of filteredBroker | async" [value]="lot.name">
+                        <span>{{ lot.name }}</span>
+                        <span style="float: right; color: gray; font-size: 3mm;">{{ lot.sortname }}</span>
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Address">
+          <ng-template mat-tab-label>
+            Address
+          </ng-template>
+          <div class="pm-pro-d">
+            <button class="btn ad-btn-display my-0" id="add" matTooltip="ADD" (click)="Addressadd()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+          <div class="row suc-input mt-3">
+            <div class="col-md-12">
+              <mat-form-field appearance="outline">
+                <mat-label>Typer Of Address</mat-label>
+                <mat-select disableRipple [(ngModel)]="TYOADD" disableOptionCentering>
+                  <mat-option value="Office">Office</mat-option>
+                  <mat-option value="Residential">Residential</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Office No.</mat-label>
+                <input matInput placeholder="Office No." [(ngModel)]="OFFNO">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Building No.</mat-label>
+                <input matInput placeholder="Building No." [(ngModel)]="BUILDNO">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Road</mat-label>
+                <input matInput placeholder="Road" [(ngModel)]="ROAD">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Area</mat-label>
+                <input matInput placeholder="Area" [(ngModel)]="AREA">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Country</mat-label>
+                <mat-select disableRipple (selectionChange)="countryChanged();getcountry($event.source.triggerValue);"
+                  [(ngModel)]="COUNTRY" disableOptionCentering>
+                  <mat-option *ngFor="let country of CountryFill" [value]="country.CON_CODE">
+                    {{country.CON_NAME}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>State</mat-label>
+                <mat-select disableRipple (selectionChange)="stateChanged();getstate($event.source.triggerValue);"
+                  [(ngModel)]="STATE" disableOptionCentering>
+                  <mat-option *ngFor="let State of StateFill" [value]="State.REG_CODE">
+                    {{State.REG_NAME}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <mat-select disableRipple (selectionChange)="CityChanged();getcity($event.source.triggerValue);"
+                  [(ngModel)]="CITY" disableOptionCentering>
+                  <mat-option *ngFor="let City of CityFill" [value]="City.CITY_CODE">
+                    {{City.CITY_NAME}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Zip-Code</mat-label>
+                <mat-select disableRipple [(ngModel)]="ZIP" disableOptionCentering>
+                  <mat-option *ngFor="let Zip of ZIPFill" [value]="Zip.ZIP_CODE">
+                    {{Zip.ZIP_CODE}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <div class="row align-items-center">
+                <div class="col-md-3 ">
+                  <button class="btn act-btn" matTooltip="Click For Set Location" (click)="RegSetLocation()">Set
+                    Location</button>
+                </div>
+                <div class="col-md-9 ">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Map Link</mat-label>
+                    <input matInput placeholder="Map Link" [(ngModel)]="LiveLoc">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 mt-3">
+              <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine"
+                [defaultColDef]="defaultColDefAdd" [columnDefs]="columnDefsAdd" (gridReady)="onGridReadyAdd($event)"
+                (rowClicked)='onGridRowClickedAdd($event)' [overlayLoadingTemplate]="AddloadingTemplate"
+                [overlayNoRowsTemplate]="AddnoRowsTemplate">
+              </ag-grid-angular>
+
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Key Person">
+          <ng-template mat-tab-label>
+            Key Person
+          </ng-template>
+          <div class="pm-pro-d">
+            <button class="btn ad-btn-display my-0" id="add" matTooltip="ADD" (click)="KeyPeradd()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+          <div class="row suc-input mt-3">
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Designation</mat-label>
+                <input matInput placeholder="Designation" [(ngModel)]="DESIGNATION">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Department</mat-label>
+                <input matInput placeholder="Department" [(ngModel)]="DEPARTMENT">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="First Name" [(ngModel)]="FIRSTNAME">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Last Name" [(ngModel)]="LASTNAME">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 ">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Email1 Type</mat-label>
+                    <mat-select disableRipple [(ngModel)]="EMAIL1TYPE" disableOptionCentering>
+                      <mat-option value="Work">Work</mat-option>
+                      <mat-option value="Personal">Personal</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6 ">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Email1</mat-label>
+                    <input matInput placeholder="Email1" (change)="validEmailcheck('EMAIL1')" [(ngModel)]="EMAIL1">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 ">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Email2 Type</mat-label>
+                    <mat-select disableRipple [(ngModel)]="EMAIL2TYPE" disableOptionCentering>
+                      <mat-option value="Work">Work</mat-option>
+                      <mat-option value="Personal">Personal</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6 ">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Email2</mat-label>
+                    <input matInput placeholder="Email1" (change)="validEmailcheck('EMAIL2')" [(ngModel)]="EMAIL2">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row align-items-center">
+                <div class="col-md-3 ">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Mobile-1 Via</mat-label>
+                    <mat-select disableRipple [(ngModel)]="MOB1VIA" disableOptionCentering>
+                      <mat-option value="Mobile">Mobile</mat-option>
+                      <mat-option value="Landline">Landline</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-3 ">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Mobile-1 Type</mat-label>
+                    <mat-select disableRipple [(ngModel)]="MOB1TYPE" disableOptionCentering>
+                      <mat-option value="Work">Work</mat-option>
+                      <mat-option value="Personal">Personal</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4 ">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Contact No.</mat-label>
+                    <input matInput placeholder="Contact No." [(ngModel)]="Mob1"
+                      onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-1 ">
+                  <mat-checkbox [(ngModel)]="WHATSAPP1"></mat-checkbox>
+                </div>
+                <div class="col-md-1 ">
+                  <mat-checkbox [(ngModel)]="VERIFY1"></mat-checkbox>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row align-items-center">
+                <div class="col-md-3 ">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Mobile-2 Via</mat-label>
+                    <mat-select disableRipple [(ngModel)]="MOB2VIA" disableOptionCentering>
+                      <mat-option value="Mobile">Mobile</mat-option>
+                      <mat-option value="Landline">Landline</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-3 ">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Mobile-2 Type</mat-label>
+                    <mat-select disableRipple [(ngModel)]="MOB2TYPE" disableOptionCentering>
+                      <mat-option value="Work">Work</mat-option>
+                      <mat-option value="Personal">Personal</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4 ">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Contact No.</mat-label>
+                    <input matInput placeholder="Contact No." [(ngModel)]="Mob2"
+                      onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-1 ">
+                  <mat-checkbox [(ngModel)]="WHATSAPP2"></mat-checkbox>
+                </div>
+                <div class="col-md-1 ">
+                  <mat-checkbox [(ngModel)]="VERIFY2"></mat-checkbox>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 suc-input">
+              <div class="row">
+                <div class="col-md-9">
+                  <mat-form-field appearance="outline">
+                    <mat-label>PAN</mat-label>
+                    <input matInput placeholder="Pan No." [(ngModel)]="PANKEYPERSONE">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-1 px-0">
+                  <label class="fu-btn" for="PicInput222">
+                    <input #PanKeyinput type="file" id="PicInput222" class="btn bm-up-btn d-none"
+                      title="Change Gst Picture" (change)="PanKeyPicChanged($event)">
+                    <i class="icon-Upload-Images"></i>
+                  </label>
+                </div>
+                <div class="col-md-2 pr-0">
+                  <div class="pm-profile-icon" (click)="OPENIMAGE(mymodal,'PANKEY')">
+                    <a href="javascript:void(0)">
+                      <img [src]="PanKeyfileUplaodURL" class="img-fluid" (error)="setDefaultPic1()">
+                    </a>
+                  </div>
+                  <button class="fc-icon-x btn filt-btn" mat-mini-fab color="primary"
+                    (click)="delete('PanKey', PanKeyinput)">x</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 mt-3">
+              <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine"
+                [defaultColDef]="defaultColDefKey" [columnDefs]="columnDefsKey" (gridReady)="onGridReadyKey($event)"
+                (rowClicked)='onGridRowClickedKey($event)' [overlayLoadingTemplate]="KeyloadingTemplate"
+                [overlayNoRowsTemplate]="KeynoRowsTemplate">
+              </ag-grid-angular>
+
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Bank Detail">
+          <ng-template mat-tab-label>
+            Bank Detail
+          </ng-template>
+          <div class="pm-pro-d">
+            <button class="btn ad-btn-display my-0" matTooltip="ADD" id="add" (click)="Bankadd()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+          <div class="row suc-input mt-3">
+
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Name of Bank</mat-label>
+                <input matInput placeholder="Name of Bank" [(ngModel)]="BANKNAME">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Account Type</mat-label>
+                <mat-select disableRipple [(ngModel)]="ACTTYPE" disableOptionCentering>
+                  <mat-option value="Current">Current</mat-option>
+                  <mat-option value="Saving">Saving</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Account Number</mat-label>
+                <input matInput placeholder="Account Number" [(ngModel)]="ActNo"
+                  onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>IFSC Code</mat-label>
+                <input matInput placeholder="IFSC Code" [(ngModel)]="IFSCCODE">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Branch Name</mat-label>
+                <input matInput placeholder="Branch Name" [(ngModel)]="BRANCHNAME">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Branch Address</mat-label>
+                <input matInput placeholder="Branch Address" [(ngModel)]="BRANCHADD">
+              </mat-form-field>
+            </div>
+            <div class="col-md-12 mt-3">
+              <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine"
+                [defaultColDef]="defaultColDefBank" [columnDefs]="columnDefsBank" (gridReady)="onGridReadyBank($event)"
+                (rowClicked)='onGridRowClickedBank($event)' [overlayLoadingTemplate]="BankloadingTemplate"
+                [overlayNoRowsTemplate]="BanknoRowsTemplate">
+              </ag-grid-angular>
+
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+<ng-template #mymodal let-modal>
+  <div class="modal-body text-center modal-img-holder">
+    <img [src]="ModelImage" class="img-fluid mx-auto" (error)="setDefaultPic()"
+      alt="./../../../assets/images/No-Image.jpg">
+  </div>
+  <div class="modal-footer">
+    <button id="Close" type="button" class="btn btn-outline-dark" matTooltip="CLOSE"
+      (click)="modal.close('Cross click')">Close</button>
+  </div>
+</ng-template>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>

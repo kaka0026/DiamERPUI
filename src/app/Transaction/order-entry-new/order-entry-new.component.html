@@ -1,0 +1,170 @@
+<div class="container dol-input">
+  <div class="row align-items-center my-3">
+    <div class="col-12 pl-0">
+      <div class="flt-btn-group">
+        <button class="btn filt-btn ml-auto" matTooltip="SAVE" (click)="Save()">
+          <mat-icon>save</mat-icon>
+        </button>
+        <button id="clear" class="btn filt-btn" matTooltip="CLEAR" (click)="Clear()">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row align-items-center">
+    <div class="col-md-6 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Order No</mat-label>
+        <input matInput name="nm" [(ngModel)]="OrderNo" disabled>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 col-12  mb-1">
+      <mat-form-field appearance="outline">
+        <mat-label>Client</mat-label>
+        <input type="text" matInput [formControl]="Client" [(ngModel)]="ClientCode" [matAutocomplete]="auto1">
+        <mat-autocomplete name="nm" #auto1="matAutocomplete" (optionSelected)="SelectClientOption();">
+          <mat-option *ngFor="let lot of filteredClient | async" [value]="lot.name">
+            <span>{{ lot.name }}</span>
+            <span style="float: right; color: gray; font-size: 3mm;">{{ lot.sortname }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+
+  </div>
+
+  <div class="row align-items-center">
+    <div class="col-md-6 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Description</mat-label>
+        <input matInput name="nm" [(ngModel)]="Description">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row align-items-center">
+    <div class="col-md-6 col-12   mb-1 pl-0">
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <input type="text" matInput [formControl]="Category" [(ngModel)]="CategoryCode" [matAutocomplete]="auto3"
+          placeholder="Category">
+        <mat-autocomplete name="nm" #auto3="matAutocomplete" (optionSelected)="fillsubcat($event.option.value)">
+          <mat-option *ngFor="let lot of filteredCategory | async" [value]="lot.name">
+            <span>{{ lot.name }}</span>
+            <span style="float: right; color: gray; font-size: 3mm;">{{ lot.sortname }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 col-12   mb-1">
+      <mat-form-field appearance="outline">
+        <mat-label>SubCategory</mat-label>
+        <input type="text" matInput [formControl]="SubCategory" [(ngModel)]="SubCategoryCode" [matAutocomplete]="auto4"
+          placeholder="SubCategory">
+        <mat-autocomplete name="nm" #auto4="matAutocomplete">
+          <mat-option *ngFor="let lot of filteredSubCategory | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-2">
+    <div class="col-md-6 col-12   mb-1 pl-0">
+      <mat-form-field appearance="outline">
+        <mat-label>KT</mat-label>
+        <input type="text" matInput [formControl]="KT" [(ngModel)]="KTCode" [matAutocomplete]="auto5"
+          (ngModelChange)="KTCode = $event.toUpperCase()">
+        <mat-autocomplete name="nm" #auto5="matAutocomplete" (optionSelected)="SelectKTOption();">
+          <mat-option *ngFor="let lot of filteredKT | async" [value]="lot.name">
+            <span>{{ lot.name }}</span>
+            <span style="float: right; color: gray; font-size: 3mm;">{{ lot.sortname }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <div class="row align-items-center mt-2">
+    <div class="col-md-6 col-12   mb-1 pl-0">
+      <mat-form-field appearance="outline">
+        <mat-label>From Color</mat-label>
+        <input type="text" matInput [formControl]="FColor" [(ngModel)]="FColorCode" [matAutocomplete]="auto6"
+          (ngModelChange)="FColorCode = $event.toUpperCase()">
+        <mat-autocomplete name="nm" #auto6="matAutocomplete">
+          <mat-option *ngFor="let lot of filteredFColor | async" [value]="lot.name">
+            <span>{{ lot.name }}</span>
+            <span style="float: right; color: gray; font-size: 3mm;">{{ lot.sortname }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 col-12   mb-1 ">
+      <mat-form-field appearance="outline">
+        <mat-label>To Color</mat-label>
+        <input type="text" matInput [formControl]="TColor" [(ngModel)]="TColorCode" [matAutocomplete]="auto7"
+          (ngModelChange)="TColorCode = $event.toUpperCase()">
+        <mat-autocomplete name="nm" #auto7="matAutocomplete">
+          <mat-option *ngFor="let lot of filteredTColor | async" [value]="lot.name">
+            <span>{{ lot.name }}</span>
+            <span style="float: right; color: gray; font-size: 3mm;">{{ lot.sortname }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-2">
+    <div class="col-md-6 col-12   mb-1 pl-0">
+      <mat-form-field appearance="outline">
+        <mat-label>From Clarity</mat-label>
+        <input type="text" matInput [formControl]="FClarity" [(ngModel)]="FClarityCode" [matAutocomplete]="auto9"
+          (ngModelChange)="FClarityCode = $event.toUpperCase()">
+        <mat-autocomplete name="nm" #auto9="matAutocomplete">
+          <mat-option *ngFor="let lot of filteredFClarity | async" [value]="lot.name">
+            <span>{{ lot.name }}</span>
+            <span style="float: right; color: gray; font-size: 3mm;">{{ lot.sortname }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 col-12   mb-1 ">
+      <mat-form-field appearance="outline">
+        <mat-label>To Clarity</mat-label>
+        <input type="text" matInput [formControl]="TClarity" [(ngModel)]="TClarityCode" [matAutocomplete]="auto8"
+          (ngModelChange)="TClarityCode = $event.toUpperCase()">
+        <mat-autocomplete name="nm" #auto8="matAutocomplete">
+          <mat-option *ngFor="let lot of filteredTClarity | async" [value]="lot.name">
+            <span>{{ lot.name }}</span>
+            <span style="float: right; color: gray; font-size: 3mm;">{{ lot.sortname }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-3">
+    <div class="col-md-6 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Comment</mat-label>
+        <input matInput name="nm" [(ngModel)]="Comment">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>

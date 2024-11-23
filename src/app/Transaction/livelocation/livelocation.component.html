@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Location</h2>
+
+
+<mat-dialog-content class="mat-typography">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false"
+    (mapClick)="mapClicked($event)">
+
+    <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i,$event)"
+      [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable"
+      (dragEnd)="markerDragEnd(m, $event)">
+
+      <agm-info-window>
+        <strong>InfoWindow content</strong>
+      </agm-info-window>
+
+    </agm-marker>
+
+    <agm-circle [latitude]="lat + 0.3" [longitude]="lng" [radius]="5000" [fillColor]="'red'" [circleDraggable]="true"
+      [editable]="true">
+    </agm-circle>
+
+  </agm-map>
+</mat-dialog-content>
+
+
+<mat-dialog-actions>
+
+  <button mat-button cdkFocusInitial (click)="CloseDialog()" matTooltip="CLOSE" class="theme-btn">Close</button>
+  <button mat-button cdkFocusInitial (click)="SaveDialog()" matTooltip="SAVE" class="theme-btn">Save</button>
+</mat-dialog-actions>

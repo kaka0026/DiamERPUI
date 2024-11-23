@@ -1,0 +1,98 @@
+header.page-header {
+  position: relative;
+  padding: 5px 20px;
+}
+.header-holder {
+  display: flex;
+}
+
+.htab-container {
+  display: flex;
+}
+.header-holder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.htab-container {
+  display: flex;
+}
+.tab-item:not(:last-child) {
+  border-right: 0;
+}
+.tab-item {
+  display: flex;
+  padding: 7px 10px;
+  align-items: center;
+  border: 1px solid #eee;
+  color: #343d46;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 100px;
+  justify-content: center;
+}
+.tab-item i {
+  font-size: 22px;
+  margin-right: 5px;
+}
+
+.tab-item.mat-drop-menu[aria-expanded="true"] {
+  background: #4f5b66;
+  color: #fff;
+}
+span.dr-box {
+  padding: 7px 15px;
+  border: 1px solid #eee;
+}
+header.page-header {
+  box-shadow: 0 0 50px rgba(192, 197, 206, 0.5);
+}
+.hrn-item {
+  cursor: pointer;
+}
+.other-nav {
+  display: flex;
+  align-items: center;
+}
+.hprofile-img {
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 1px solid #eee;
+  margin: 0 15px;
+}
+.profile-edit-nav {
+  width: 70px;
+  height: 70px;
+  margin: 10px auto;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 2px solid #eee;
+}
+.pen_icon {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: #c0c5ce;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -20px;
+  z-index: 999;
+  margin-left: 46px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #343d46;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+.header-right-nav {
+  display: flex;
+  align-items: center;
+}
+.hrn-item i.la.la-power-off {
+  font-size: 30px;
+  margin-top: 5px;
+  color: #343d46;
+}

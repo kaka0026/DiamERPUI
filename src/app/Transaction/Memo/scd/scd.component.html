@@ -1,0 +1,258 @@
+<div class="container-fluid">
+  <div class="row section-head-row align-items-center mt-minus">
+    <div class="col-6 pl-0">
+      <h5 class="section-title">
+        LOOSE SPECIAL CUT DIAMONDS
+      </h5>
+    </div>
+    <div class="col-md-6 text-right">
+      <div class="row">
+        <button class="btn filt-btn ml-auto " matTooltip="CLOSE" (click)="Close()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <button id="save" class="btn filt-btn  mr-0" matTooltip="SAVE" (click)="Save()">
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Category</mat-label>
+        <input matInput name="nm" [(ngModel)]="Category" disabled>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field class="example-full-width">
+        <mat-label>Material</mat-label>
+        <input type="text" matInput [formControl]="Material" [(ngModel)]="MaterialCode" [matAutocomplete]="auto1">
+        <mat-autocomplete name="nm" #auto1="matAutocomplete" (optionSelected)="SelectMaterialOption();">
+          <mat-option *ngFor="let lot of filteredMaterial | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field class="example-full-width">
+        <mat-label>Shape</mat-label>
+        <input type="text" matInput [formControl]="Shape" [(ngModel)]="ShapeCode" [matAutocomplete]="auto2">
+        <mat-autocomplete name="nm" #auto2="matAutocomplete" (optionSelected)="SelectShapeOption();">
+          <mat-option *ngFor="let lot of filteredShape | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-md-2 col-12  dol-input mb-1 pl-0">
+      <mat-radio-group [(ngModel)]="selectedStatus" (change)="ChnageRangeFormat()" style="display: flex;"
+        [disabled]="Disbled">
+        <mat-radio-button value="SIEVE">SIEVE</mat-radio-button>
+        <mat-radio-button value="GAGUE">GAGUE</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col-md-2 col-12 text-right  dol-input mb-1">
+
+      <label>SIEVE/GAGUE</label>
+
+
+    </div>
+
+    <div class="col-md-4 col-12  dol-input two-fields mb-1" style="display: flex;">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>From</mat-label>
+        <input matInput name="nm" [(ngModel)]="SGFrom" style="text-align: right !important;" [disabled]="Disbled"
+          (keyup)="ChnageRangeFormat() ;"
+          onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>To</mat-label>
+        <input matInput name="nm" [(ngModel)]="SGTo" style="text-align: right !important;" [disabled]="Disbled"
+          onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'
+          (keyup)="ChnageRangeFormat() ;">
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>SIEVE/GAGUE RANGE</mat-label>
+        <input matInput disabled name="nm" [(ngModel)]="SGRang" style="text-align: right !important;" disabled>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-md-1 pl-0">
+      <label>Colour</label>
+    </div>
+    <div class="col-md-3 col-12  dol-input two-fields mb-1 pl-0" style="display: flex;">
+      <mat-form-field class="example-full-width">
+        <mat-label>From</mat-label>
+        <input type="text" matInput [formControl]="FromColor" [(ngModel)]="FromColorCode" [matAutocomplete]="auto3">
+        <mat-autocomplete name="nm" #auto3="matAutocomplete" (optionSelected)="SelectColorOption();">
+          <mat-option *ngFor="let lot of filteredFromColor | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>To</mat-label>
+        <input type="text" matInput [formControl]="ToColor" [(ngModel)]="ToColorCode" [matAutocomplete]="auto10">
+        <mat-autocomplete name="nm" #auto10="matAutocomplete">
+          <mat-option *ngFor="let lot of filteredToColor | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-md-1">
+      <label>Clarity</label>
+    </div>
+    <div class="col-md-3 col-12  dol-input two-fields mb-1" style="display: flex;">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>From</mat-label>
+        <input type="text" matInput [formControl]="FromClarity" [(ngModel)]="FromClarityCode" [matAutocomplete]="auto4">
+        <mat-autocomplete name="nm" #auto4="matAutocomplete" (optionSelected)="SelectClarityOption();">
+          <mat-option *ngFor="let lot of filteredFromClarity | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>To</mat-label>
+        <input type="text" matInput [formControl]="ToClarity" [(ngModel)]="ToClarityCode" [matAutocomplete]="auto11">
+        <mat-autocomplete name="nm" #auto11="matAutocomplete">
+          <mat-option *ngFor="let lot of filteredToClarity | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-md-1">
+      <label>Size</label>
+    </div>
+    <div class="col-md-3 col-12  dol-input two-fields mb-1" style="display: flex;">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>From</mat-label>
+        <input type="text" matInput [formControl]="FromSize" [(ngModel)]="FromSizeCode" [matAutocomplete]="auto12">
+        <mat-autocomplete name="nm" #auto12="matAutocomplete" (optionSelected)="SelectSizeOption();">
+          <mat-option *ngFor="let lot of filteredFromSize | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>To</mat-label>
+        <input type="text" matInput [formControl]="ToSize" [(ngModel)]="ToSizeCode" [matAutocomplete]="auto13">
+        <mat-autocomplete name="nm" #auto13="matAutocomplete">
+          <mat-option *ngFor="let lot of filteredToSize | async" [value]="lot.name">
+            <span style="text-align: end;">{{ lot.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-md-4 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Pcs</mat-label>
+        <input matInput name="nm" [(ngModel)]="Pcs" style="text-align: right !important;" [disabled]="Disbled"
+          onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+      </mat-form-field>
+    </div>
+
+
+    <div class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>WT</mat-label>
+        <input matInput name="nm" [(ngModel)]="Weight" style="text-align: right !important;" [disabled]="Disbled"
+          (keyup)="ChnagePriceCal() ;"
+          onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+      </mat-form-field>
+    </div>
+
+    <div id="certno" class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field appearance="standard">
+        <mat-label>Units</mat-label>
+        <mat-select disabled [(ngModel)]="Unit" disableOptionCentering>
+          <mat-option *ngFor="let option of UnitList" [value]="option.id">
+            {{option.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-md-2 col-12  dol-input mb-1 pl-0">
+      <mat-radio-group [(ngModel)]="selectedPriceUnit" (change)="ChnagePriceCal()" style="display: flex;"
+        [disabled]="Disbled">
+        <mat-radio-button value="Rs">₹</mat-radio-button>
+        <mat-radio-button value="Dol">$ Conv</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="col-md-2 col-12  dol-input mb-1 pl-0">
+      <mat-form-field appearance="outline" ngDefaultControl id="pr" style="display: none !important;"
+        (keyup)="ChnagePriceCal() ;">
+        <input matInput name="nm" [(ngModel)]="Dollar" [disabled]="Disbled"
+          onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'>
+      </mat-form-field>
+    </div>
+
+    <div id="lb" class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Ask Price/UNIT</mat-label>
+        <input matInput name="nm" [(ngModel)]="PRUN" style="text-align: right !important;" [disabled]="Disbled"
+          onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 189 || event.charCode == 46)'
+          (keyup)="ChnagePriceCal() ;">
+      </mat-form-field>
+    </div>
+
+    <div id="certno" class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Total Amount</mat-label>
+        <input matInput disabled name="nm" [(ngModel)]="TAmount" style="text-align: right !important;">
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <div class="row align-items-center">
+    <div class="col-md-2 col-12  dol-input mb-1 pl-0">
+      <mat-radio-group [(ngModel)]="selectedPurpose" (change)="ChnagePricePurpose()" style="display: flex;"
+        [disabled]="Disbled">
+        <mat-radio-button value="STOCK">Stock</mat-radio-button>
+        <mat-radio-button value="ORDER">Order</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col-md-2 col-12  dol-input mb-1 pl-0"></div>
+
+    <div id="ord" class="col-md-4 col-12  dol-input mb-1" style="display: none;">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Order No</mat-label>
+        <input matInput name="nm" [(ngModel)]="OrdnerNo" [disabled]="Disbled">
+      </mat-form-field>
+    </div>
+
+    <div id="certno" class="col-md-4 col-12  dol-input mb-1">
+      <mat-form-field appearance="outline" ngDefaultControl>
+        <mat-label>Comment</mat-label>
+        <input matInput name="nm" [(ngModel)]="Comment" [disabled]="Disbled">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>

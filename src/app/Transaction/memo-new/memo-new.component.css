@@ -1,0 +1,27 @@
+table th,
+table td {
+  padding: 0.5rem;
+  border-top: none;
+}
+
+table tr:not(:last-child) {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.modal-header {
+  padding: 1rem 1rem 0 1rem;
+}
+
+.modal-body {
+  padding: 0 1rem 0 1rem;
+}
+
+h4#modal-basic-title {
+  margin: 0 0 10px 0;
+}
+
+mat-h4,
+mat-subheading-1,
+mat-typography h4 {
+  margin: 0;
+}

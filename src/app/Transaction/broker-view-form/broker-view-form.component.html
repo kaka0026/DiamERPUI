@@ -1,0 +1,188 @@
+<div class="modal-body psbar">
+  <div class="container-fluid">
+    <div class="row section-head-row align-items-center mt-minus">
+      <div class="col-6 pl-0">
+        <h5 class="section-title">
+          Broker List
+        </h5>
+      </div>
+      <div class="col-6 text-right">
+        <div class="row">
+          <button class="btn filt-btn ml-auto " matTooltip="CLOSE" (click)="Close()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-sm-12">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="row lgbox">
+            <div class="col-lg-10 col-md-10 col-sm-12 bord_rg">
+              <img src="http://uat.peacocktech.in/demo3/images/diam-1.svg" class="cnt_logo" />
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12">
+              <img id="ImgProfile" class="cnt_prf" [src]=profileImage />
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <h4>Broker Detail</h4>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 sd_bord">
+            <div class="scrl_div">
+              <div class="divTable blueTable">
+                <div class="divTableBody">
+                  <div class="divTableRow">
+                    <div class="divTableCell clnt_main">Name</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Name}}</div>
+                    <div class="divTableCell clnt_main">Broker ID</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.ClientID}}</div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell clnt_main">Mobile 1</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Mobile_1_NO}}</div>
+                    <div class="divTableCell clnt_main">Mobile 2</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Mobile_2_NO}}</div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell clnt_main">Email 1</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Email1}}</div>
+                    <div class="divTableCell clnt_main">Email 2</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Email2}}</div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="scrl_div">
+              <div class="divTable blueTable">
+                <div class="divTableBody">
+
+                  <div class="divTableRow clnt_pan">
+                    <div class="divTableCell clnt_main">PAN</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.PAN_NO}}</div>
+                    <div class="divTableCell clnt_main">GST</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.GST_NO}}</div>
+                  </div>
+                  <div class="divTableRow clnt_mail1">
+                    <div class="divTableCell clnt_main"></div>
+                    <div class="divTableCell clnt_txt">
+                      <div class="cd-upfile">
+                        <img id="ImgPanImage" style="width:40%;height: 150px;" class="cd-displayfile" [src]=PanImage />
+                      </div>
+                    </div>
+                    <div class="divTableCell clnt_main"></div>
+                    <div class="divTableCell clnt_txt">
+                      <div class="cd-upfile">
+                        <img id="ImgGSTImage" style="width:40%;height: 150px;" class="cd-displayfile" [src]=GSTImage />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="divTableRow clnt_pan">
+                    <div class="divTableCell clnt_main">Photo ID</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.PHOTO_ID_NO}}</div>
+
+                  </div>
+                  <div class="divTableRow clnt_mail1">
+                    <div class="divTableCell clnt_main"></div>
+                    <div class="divTableCell clnt_txt">
+                      <div class="cd-upfile">
+                        <img id="ImgPhotoID" style="width:40%;height: 150px;" [src]=PHOTOID class="cd-displayfile" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <h4>Address: Residence</h4>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 sd_bord">
+            <div class="scrl_div">
+              <div class="divTable blueTable">
+                <div class="divTableBody">
+                  <div class="divTableRow">
+                    <div class="divTableCell clnt_main">Flat/House No.</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Residence_Flat_No}}</div>
+                    <div class="divTableCell clnt_main">Society/Apartment</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Residence_Society}}</div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell clnt_main">Road</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Residence_Road}}</div>
+                    <div class="divTableCell clnt_main">Area</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Residence_Area}}</div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell clnt_main">Country</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Residence_Country_Name}}</div>
+                    <div class="divTableCell clnt_main">State</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Residence_State_Name}}</div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell clnt_main">City</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Residence_City_Name}}</div>
+                    <div class="divTableCell clnt_main">Pincode</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Residence_Zip}}</div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell clnt_main">Map Link</div>
+                    <div class="divTableCell clnt_txt map_lnk" style="cursor: pointer;">
+                      <a [href]="MAPLINK" target="_blank">{{ClientInfo.Residence_Map_Link}}</a></div>
+                    <div class="divTableCell clnt_main">Phone</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Residence_Phone}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <h4>Address: Office</h4>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 sd_bord">
+            <div class="scrl_div">
+              <div class="divTable blueTable">
+                <div class="divTableBody">
+                  <div class="divTableRow">
+                    <div class="divTableCell clnt_main">Flat/House No.</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Office_plot_Or_Office_No}}</div>
+                    <div class="divTableCell clnt_main">Society/Apartment</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Office_Society_Or_Apartment}}</div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell clnt_main">Road</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Office_Road}}</div>
+                    <div class="divTableCell clnt_main">Area</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Office_Area}}</div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell clnt_main">Country</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Office_Country_Name}}</div>
+                    <div class="divTableCell clnt_main">State</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Office_State_Name}}</div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell clnt_main">City</div>
+                    <div class="divTableCell clnt_txt" id="Lbl_O_City">{{ClientInfo.Office_City_Name}}
+                    </div>
+                    <div class="divTableCell clnt_main">Pincode</div>
+                    <div class="divTableCell clnt_txt" id="Lbl_O_PinCode">{{ClientInfo.Office_Zip}}
+                    </div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell clnt_main">Map Link</div>
+                    <div class="divTableCell clnt_txt map_lnk" style="cursor: pointer;">
+                      <a [href]="OFFMAPLINK" target="_blank">{{ClientInfo.Office_Map_Link}}</a></div>
+                    <div class="divTableCell clnt_main">Phone</div>
+                    <div class="divTableCell clnt_txt">{{ClientInfo.Office_Phone}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>

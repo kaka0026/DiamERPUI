@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="row section-head-row align-items-center">
+    <div class="col-6 pl-0">
+      <h5 class="section-title">
+        New - Black & white Design
+      </h5>
+    </div>
+    <div class="col-6 text-right pr-0">
+      <div class="head-btn-display-group ml-auto">
+        <button class="btn filt-btn" matTooltip="SAVE" (click)="Save()">
+          <mat-icon>save</mat-icon>
+        </button>
+        <button class="btn filt-btn" id="clear" matTooltip="CLEAR" (click)="Clear()">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-12">
+      <div class="row don-form-group">
+        <div class="col-12 form-input mb-1 d-flex">
+          <label>Design Code</label>
+          <p class="dym-field">{{Design}}</p>
+        </div>
+        <div class="col-12 form-input mb-1">
+          <label>DATE:</label>
+          <mat-form-field appearance="outline" (click)="SaveDate.open()" class="dym-field">
+            <input matInput [matDatepicker]="SaveDate" [readonly]="true" [max]="tomorrow" [(ngModel)]="SAVEDATE">
+            <mat-datepicker-toggle matSuffix [for]="SaveDate"></mat-datepicker-toggle>
+            <mat-datepicker #SaveDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-12 form-input mb-1">
+          <label>Designer Code:</label>
+          <mat-form-field appearance="outline" class="example-full-width dym-field">
+            <input type="text" matInput [(ngModel)]="DesigneCode" [formControl]="Designer" [matAutocomplete]="auto2">
+            <mat-autocomplete name="nm" #auto2="matAutocomplete">
+              <mat-option *ngFor="let lot3 of filteredDesigner | async" [value]="lot3.name">
+                <span>{{ lot3.name }}</span>
+                <span style="float: right; color: gray; font-size: 3mm;">{{ lot3.sortname }}</span>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        <div class="col-12 form-input mb-1">
+          <label>Category:</label>
+          <mat-form-field appearance="outline" class="example-full-width dym-field">
+            <input type="text" matInput [formControl]="Category" [(ngModel)]="CategoryCode" [matAutocomplete]="auto3">
+            <mat-autocomplete name="nm" #auto3="matAutocomplete"
+              (optionSelected)="fillsubcat($event.option.value);GetId();">
+              <mat-option *ngFor="let lot3 of filteredCategory | async" [value]="lot3.name">
+                <span>{{ lot3.name }}</span>
+                <span style="float: right; color: gray; font-size: 3mm;">{{ lot3.sortname }}</span>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        <div class="col-12 form-input mb-1">
+          <label>SubCategory:</label>
+          <mat-form-field appearance="outline" class="example-full-width dym-field">
+            <input type="text" matInput [formControl]="SubCategory" [(ngModel)]="SubCategoryCode"
+              [matAutocomplete]="auto4">
+            <mat-autocomplete name="nm" #auto4="matAutocomplete">
+              <mat-option *ngFor="let lot3 of filteredSubCategory | async" [value]="lot3.name">
+                <span style="text-align: end;">{{ lot3.name }}</span>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        <div class="col-12 form-input mb-1">
+          <label>Orientation:</label>
+          <mat-radio-group aria-label="Select an option" [(ngModel)]="ORIENTATION" class="dym-field">
+            <mat-radio-button value="P" class="mr-3">Portrait</mat-radio-button>
+            <mat-radio-button value="L">Landscape</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-12">
+      <div class="pm-profile-data">
+        <label class="pm-profile-icon" for="PicInput">
+          <img [src]="BlackAndWhite" (error)="setDefaultPic()" class="img-fluid" alt="">
+        </label>
+        <div class="pm-pro-info">
+          <input type="file" id="PicInput" class="btn bm-up-btn d-none" title="Change Profile Picture"
+            (change)="PicChanged($event)">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>

@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Email Verification</h4>
+</div>
+<div class="modal-body">
+  <P>Enter OTP here which was sent by SMS</P>
+  <p class="a-o-i">Enter verification code</p>
+  <div class="row">
+    <div class="col-md-8">
+      <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" *ngIf="showOtpComponent" [config]="config">
+      </ng-otp-input>
+    </div>
+    <div class="col-md-4">
+      <p *ngIf="TIMER">{{timer}}</p>
+      <button *ngIf="resend" class="btn filt-btn" (click)="RESEND()">
+        <label>resend OTP</label>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button ngbAutofocus id="Close" type="button" class="btn btn-outline-dark"
+    (click)="close()">Close</button>
+  <button type="button" class="btn btn-outline-dark" (click)="Verify()">Verify</button>
+</div>

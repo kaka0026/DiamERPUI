@@ -1,0 +1,77 @@
+<div class="col-md-12">
+  <div class="pm-pro-d align-items-center mb-3">
+    <div class="col-md-10 text-center">
+      ADD NEW ADDRESS
+    </div>
+    <div class="col-md-2 text-right pr-0">
+      <button class="btn filt-btn ml-auto" matTooltip="CLOSE" (click)="Close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="row suc-input mt-3">
+  <div class="col-md-12">
+    <mat-form-field appearance="outline">
+      <mat-label>Address Name</mat-label>
+      <input matInput [(ngModel)]="AddressName" placeholder="Address Name">
+    </mat-form-field>
+  </div>
+  <div class="col-md-12">
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput [(ngModel)]="Address" placeholder="Address">
+    </mat-form-field>
+  </div>
+  <div class="col-md-12">
+    <mat-form-field appearance="outline">
+      <mat-label>Apartment, Suite, etc (Optional)</mat-label>
+      <input matInput [(ngModel)]="ApartmentOP" placeholder="Apartment, Suite, etc (Optional)">
+    </mat-form-field>
+  </div>
+  <div class="col-md-12">
+    <mat-form-field appearance="outline">
+      <mat-label>Zip-Code</mat-label>
+      <input type="text" matInput [(ngModel)]="ZIP" placeholder="Zip-Code" (change)="ZIPCHANGE()">
+    </mat-form-field>
+
+  </div>
+  <div class="col-md-12">
+    <mat-form-field appearance="outline">
+      <mat-label>Country</mat-label>
+      <mat-select disableRipple (selectionChange)="RescountryChanged();getrescountry($event.source.triggerValue);"
+        [(ngModel)]="RESCOUNTRY" disableOptionCentering>
+        <mat-option *ngFor="let country of ResCountryFill" [value]="country.CON_CODE">
+          {{country.CON_NAME}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-md-12">
+    <mat-form-field appearance="outline">
+      <mat-label>State</mat-label>
+      <mat-select disableRipple (selectionChange)="ResstateChanged();getresstate($event.source.triggerValue);"
+        [(ngModel)]="RESSTATE" disableOptionCentering>
+        <mat-option *ngFor="let State of ResStateFill" [value]="State.REG_CODE">
+          {{State.REG_NAME}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-md-12">
+    <mat-form-field appearance="outline">
+      <mat-label>City</mat-label>
+      <mat-select disableRipple (selectionChange)="ResCityChanged();getrescity($event.source.triggerValue);"
+        [(ngModel)]="RESCITY" disableOptionCentering>
+        <mat-option *ngFor="let City of ResCityFill" [value]="City.CITY_CODE">
+          {{City.CITY_NAME}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="col-md-12">
+    <div class="pm-pro-d align-items-center mb-3">
+      <button class="btn filt-btn" (click)="Save()">
+        <mat-icon>save</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

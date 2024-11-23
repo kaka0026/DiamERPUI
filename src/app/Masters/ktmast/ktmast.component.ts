@@ -1,0 +1,328 @@
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { KTMastService } from "../../Services/Masters/ktmast.service";
+import { ToastrService } from "ngx-toastr";
+import { NgxSpinnerService } from "ngx-spinner";
+import * as $ from "jquery";
+import { JwtHelperService } from "@auth0/angular-jwt";
+import Swal, * as _swal from "sweetalert2";
+import { TrackMastComponent } from '../track-mast/track-mast.component';
+import { MatDialog } from "@angular/material/dialog";
+import PerfectScrollbar from "perfect-scrollbar";
+import { PermissionService } from "../../Services/Access/permission.service";
+
+@Component({
+  selector: 'app-ktmast',
+  templateUrl: './ktmast.component.html',
+  styleUrls: ['./ktmast.component.css']
+})
+export class KTMastComponent implements OnInit {
+
+  decodeHelper = new JwtHelperService();
+  decodedTkn = this.decodeHelper.decodeToken(localStorage.getItem("token"));
+
+  public columnDefs;
+  public gridApi;
+  public gridColumnApi;
+  public defaultColDef;
+  public noRowsTemplate;
+  public loadingTemplate;
+
+  chkIsActive: boolean = false;
+  CODE: any = "";
+  NAME: any = "";
+  KTCODE: number = 0;
+  NEWADD: boolean = false;
+  CHECK: boolean = false;
+  EDIT: boolean = false;
+  DELETE: boolean = false;
+  TRACK: boolean = false;
+
+  constructor(
+    public dialog: MatDialog,
+    private elementRef: ElementRef,
+    private KTMastSer: KTMastService,
+    private PermissionSer: PermissionService,
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService
+  ) {
+    this.loadingTemplate =
+      `<span class="ag-overlay-loading-center">data is loading...</span>`;
+    this.noRowsTemplate =
+      `<span>no rows to show</span>`;
+
+    let ObjResult = {
+      USERID: this.decodedTkn.UserId,
+      PAGENAME: "Metal_KT_Mast.aspx"
+    }
+    let _edit;
+    let _delete;
+    let _track;
+    this.PermissionSer.PageWisePermissionFill(ObjResult).subscribe(Result => {
+      try {
+        if (Result.Success == 1) {
+          if (Result.Data[0].ISNEWADD == "False") {
+            this.NEWADD = false;
+          } else {
+            this.NEWADD = true;
+          }
+          if (Result.Data[0].ISEDIT == "False") {
+            this.EDIT = false;
+          } else {
+            this.EDIT = true;
+          }
+          _edit = this.EDIT;
+          if (Result.Data[0].ISDELETE == "False") {
+            this.DELETE = false;
+          } else {
+            this.DELETE = true;
+          }
+          _delete = this.DELETE;
+          if (Result.Data[0].ISVIEW == "False") {
+            $("#grid").hide();
+          }
+          if (Result.Data[0].ISACTIVEDEACTIVE == "False") {
+            this.CHECK = false;
+          } else {
+            this.CHECK = true;
+          }
+          if (Result.Data[0].ISTRACK == "False") {
+            this.TRACK = false;
+          } else {
+            this.TRACK = true;
+          }
+          _track = this.TRACK;
+        } else {
+          this.toastr.clear();
+          this.toastr.error("Somthing Went Wrong");
+        }
+      } catch (err) {
+        this.toastr.clear();
+        this.toastr.error(err);
+      }
+    });
+
+    this.columnDefs = [
+      {
+        headerName: "Code",
+        field: "KT_Code",
+        cellStyle: { "text-align": "center" },
+        width: 120
+      },
+      {
+        headerName: "Name",
+        field: "KT_Desc",
+        cellStyle: { "text-align": "center" },
+        width: 600
+      },
+      {
+        headerName: "Action",
+        field: "M_CAT_Code",
+        width: 400,
+        cellStyle: { "text-align": "center" },
+        cellRenderer: function (params) {
+          var html = '<div style="display:flex !important; " class="grid-btn-group">';
+          if (params.data.IsActive == true) {
+            if (_edit == true) {
+              html += '<div class="updateuser"><button type="button" value="Update" title="UPDATE" class="la la-pencil-square-o" data-action-type="UpdateUser"></button></div>';
+            }
+            if (_delete == true) {
+              html += '<div class="delete"> <button  type="button" class="la la-trash" title="DELETE" value="Delete" data-action-type="DeleteUser"></button></div>'
+            }
+            html += '<div class="check"><button type="button" class="la la-check" title="TRUE" value="Check" disabled></button></div>';
+            if (_track == true) {
+              html += '<div class="Track"><button type="button" class="la la-road" title="TRACK" value="Track" data-action-type="TrackUser"></button></div>'
+            }
+            return html + '</div>';
+          }
+          else {
+            if (_edit == true) {
+              html += '<div class="updateuser"><button type="button" value="Update" title="UPDATE" class="la la-pencil-square-o" data-action-type="UpdateUser"></button></div>';
+            }
+            if (_delete == true) {
+              html += '<div style="color: #f44336;" class="delete"><button type="button" title="DELETE" class="la la-trash" value="Delete" data-action-type="DeleteUser"></button></div> '
+            }
+            html += '<div class="check"><button type="button" class="la la-remove" title="FLASE" value="Check" disabled></button></div>';
+            if (_track == true) {
+              html += '<div class="Track"><button type="button" class="la la-road" title="TRACK" value="Track" data-action-type="TrackUser"></button></div>'
+            }
+            return html + '</div>';
+          }
+        }
+      }
+    ];
+    this.defaultColDef = {
+      resizable: true,
+      filter: true,
+      sortable: true
+    };
+  }
+
+  ngOnInit(): void {
+  }
+
+  onGridRowClicked(eve: any) {
+    let actionType = eve.event.target.getAttribute("data-action-type");
+    if (actionType == "UpdateUser") {
+      $("#addcontrol").css("display", "block");
+      $("#add").css("display", "none");
+      this.KTCODE = eve.data.KT_Id;
+      this.CODE = eve.data.KT_Code;
+      this.NAME = eve.data.KT_Desc;
+      this.chkIsActive = eve.data.IsActive;
+      $("#code").focus();
+    }
+    if (actionType == "DeleteUser") {
+      Swal.fire({
+        title: "Are you sure you want to delete " + eve.data.KT_Code + "?",
+        icon: "warning",
+        cancelButtonText: "No",
+        showCancelButton: true,
+        confirmButtonText: "Yes"
+      }).then(result => {
+        this.spinner.show();
+        if (result.value) {
+          let resultObj = {
+            USERID: this.decodedTkn.UserId,
+            KT_Id: eve.data.KT_Id
+          }
+          this.KTMastSer.KTMastDelete(resultObj).subscribe(Result => {
+            try {
+              if (Result.Success == 1) {
+                this.toastr.clear();
+                this.toastr.success("Deleted Successfully", "SUCCESS");
+                this.LoadGridData();
+              } else {
+                this.spinner.hide();
+                this.toastr.clear();
+                this.toastr.info("Data not found");
+              }
+            } catch (err) {
+              this.spinner.hide();
+              this.toastr.clear();
+              this.toastr.error(err);
+            }
+          });
+        } else {
+          this.LoadGridData();
+        }
+      });
+    }
+    if (actionType == "TrackUser") {
+      const PRF = this.dialog.open(TrackMastComponent, { width: '80%', data: { O_id: eve.data.KT_Id, PageName: 'Metal_KT_Mast.aspx' } })
+      PRF.afterClosed().subscribe(result => {
+        $('html').removeClass('pdr-scroll-none');
+        $('.cdk-overlay-container').removeClass('pdr-scroll-active');
+      });
+    }
+  }
+
+  onGridReady(params) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+    this.LoadGridData();
+    const agBodyViewport: HTMLElement = this.elementRef.nativeElement.querySelector('.ag-body-viewport');
+    const agBodyHorizontalViewport: HTMLElement = this.elementRef.nativeElement.querySelector('.ag-body-horizontal-scroll-viewport');
+    if (agBodyViewport) {
+      const ps = new PerfectScrollbar(agBodyViewport);
+      ps.update();
+    }
+    if (agBodyHorizontalViewport) {
+      const ps = new PerfectScrollbar(agBodyHorizontalViewport);
+      ps.update();
+    }
+  }
+  add() {
+    $("#addcontrol").css("display", "block");
+    $("#add").css("display", "none");
+  }
+  List() {
+    $("#addcontrol").css("display", "none");
+    $("#add").css("display", "block");
+  }
+  Clear() {
+    this.chkIsActive = false;
+    this.CODE = "";
+    this.NAME = "";
+    if (this.NEWADD == true) {
+      this.KTCODE = 0;
+    }
+  }
+  LoadGridData() {
+    this.spinner.show();
+    this.KTMastSer.KTMastFill({}).subscribe(Result => {
+      try {
+        if (Result.Success == 1) {
+          this.gridApi.setRowData(Result.Data);
+          this.spinner.hide();
+        } else {
+          this.spinner.hide();
+          this.gridApi.setRowData();
+        }
+      } catch (err) {
+        this.spinner.hide();
+        this.toastr.error(err);
+      }
+    });
+  }
+  Save() {
+    if (this.NAME.trim() == "") {
+      this.toastr.clear();
+      this.toastr.warning("Enter Name");
+      return;
+    }
+    if (this.CODE.trim() == "") {
+      this.toastr.clear();
+      this.toastr.warning("Enter Code");
+      return;
+    }
+    this.spinner.show();
+    let ResulObj = {
+      USERID: this.decodedTkn.UserId,
+      KT_Desc: this.NAME,
+      KT_Id: this.KTCODE == 0 ? "" : this.KTCODE,
+      KT_Code: this.CODE,
+      IsActive: this.chkIsActive
+    };
+    this.KTMastSer.KTMastSave(ResulObj).subscribe(Result => {
+      try {
+        if (Result.Success == 1) {
+          this.toastr.clear();
+          this.toastr.success("Saved SuccessFully");
+          this.LoadGridData();
+          this.Clear();
+          this.KTCODE = 0;
+        } else {
+          this.spinner.hide();
+          this.toastr.clear();
+          this.toastr.error("Somthing Went Wrong");
+        }
+      } catch (err) {
+        this.spinner.hide();
+        this.toastr.clear();
+        this.toastr.error(err);
+      }
+    });
+  }
+  CheckCode() {
+    if (this.CODE.trim() != "") {
+      this.KTMastSer.KTMastCheck({ KT_Code: this.CODE }).subscribe(Result => {
+        try {
+          if (Result.Success == 1) {
+            Swal.fire({
+              title: "Already this code exists!",
+              icon: "warning",
+              confirmButtonText: "OK"
+            }).then(result => {
+              if (result.value) {
+                this.CODE = "";
+              }
+            });
+          }
+        } catch (err) {
+          this.toastr.clear();
+          this.toastr.error(err);
+        }
+      });
+    }
+  }
+}

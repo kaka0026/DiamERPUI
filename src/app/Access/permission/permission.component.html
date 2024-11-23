@@ -1,0 +1,39 @@
+<div class="filt-row d-flex justify-content-between">
+  <mat-form-field appearance="outline">
+    <input type="text" placeholder="Select UserId" aria-label="Assignee" matInput [(ngModel)]="EmployeeCode"
+      [formControl]="Employee" [matAutocomplete]="auto2">
+    <mat-autocomplete #auto2="matAutocomplete" (optionSelected)="LoadGrid($event.option.value)">
+      <mat-option *ngFor="let lot of filteredEmployee | async" [value]="lot.name">
+        <span>{{ lot.name }}</span>
+        <span style="float: right; color: gray; font-size: 3mm;">{{ lot.code }}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <div id="addcontrol1" style="display: none;">
+    <div class="flt-btn-group">
+      <button class="btn filt-btn" matTooltip="SAVE" (click)="Save()">
+        <mat-icon>save</mat-icon>
+      </button>
+      <button class="btn filt-btn" matTooltip="CLEAR" (click)="Clear()">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="addcontrol" style="display: none;">
+
+  <ag-grid-angular style="width: 100%; height: calc(100vh - 220px);" class="ag-theme-alpine"
+    [defaultColDef]="defaultColDef" [columnDefs]="columnDefs" (gridReady)="onGridReady($event)"
+    [getRowNodeId]="getRowNodeId" [animateRows]="true" [overlayLoadingTemplate]="loadingTemplate"
+    [overlayNoRowsTemplate]="noRowsTemplate" (rowClicked)='onGridRowClicked($event)' [pagination]="true">
+  </ag-grid-angular>
+</div>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>

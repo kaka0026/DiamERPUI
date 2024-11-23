@@ -1,0 +1,6 @@
+
+::ng-deep .mat-select-search-input {
+  padding: 16px 6px 16px 28px !important;
+  box-sizing: border-box;
+  width: 100%;
+}

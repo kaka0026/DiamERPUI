@@ -1,0 +1,44 @@
+.clsErrorBorder {
+    border: ridge;
+    border-color: red !important;
+}
+
+.material-input label { 
+    font-weight: 800;
+    left: -1px;
+    top: -20px;
+    cursor: pointer;
+}
+
+.authentication-col-content-2 {
+    padding: 0px 30px !important;
+}
+.lgn-container {
+    display: flex;
+    height: 100vh;
+}
+.lgn-left {
+    background: RGB(47,49,61);
+}
+
+.lgn-logo-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lgn-frm-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button.btn.lgn-btn {
+    box-shadow: none;
+    border: 1px solid #333;
+    background: transparent;
+    color: #000;
+    border-radius: 100px;
+    min-width: 150px;
+}

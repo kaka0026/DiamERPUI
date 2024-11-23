@@ -1,0 +1,21 @@
+<div class="filt-row d-flex justify-content-between">
+<button *ngIf="NEWADD" class="btn ad-btn-display" id="add" matTooltip="ADD" (click)="add()">
+    <mat-icon>add</mat-icon>
+</button>
+<button class="btn ad-btn-display1" matTooltip="Click To Refresh Grid" id="add" (click)="LoadGrid()">
+    <mat-icon>refresh</mat-icon>
+</button>
+</div>
+
+<ag-grid-angular style="width: 100%; height: calc(100vh - 230px);" class="ag-theme-alpine"
+    [defaultColDef]="defaultColDef" [columnDefs]="columnDefs" (gridReady)="onGridReady($event)" [animateRows]="true"
+    (rowClicked)='onGridRowClicked($event)' [pagination]="true" [overlayLoadingTemplate]="loadingTemplate"
+    [overlayNoRowsTemplate]="noRowsTemplate">
+</ag-grid-angular>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+      <div></div>
+      <div></div>
+      <div></div>
+  </div>
+</ngx-spinner>

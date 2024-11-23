@@ -1,0 +1,68 @@
+<div id="addcontrol" class="filt-row" style="display: none;">
+  <div class="col-md-2 dol-input">
+    <mat-form-field appearance="outline" ngDefaultControl>
+      <mat-label>Code</mat-label>
+      <input id="code" matInput name="nm" [(ngModel)]="CODE" (ngModelChange)="CODE = $event.toUpperCase()"
+        (change)="CheckCode();">
+    </mat-form-field>
+  </div>
+  <div class="col-md-2 dol-input">
+    <mat-form-field appearance="outline" ngDefaultControl class="biginput">
+      <mat-label>Name</mat-label>
+      <input matInput name="nm" class="biginput" [(ngModel)]="NAME" (ngModelChange)="NAME = $event.toUpperCase()">
+    </mat-form-field>
+  </div>
+  <div class="col-md-2 dol-input">
+    <mat-form-field appearance="outline">
+      <mat-label>Type Of Good</mat-label>
+      <mat-select [formControl]="TypeOfGood" placeholder="Type Of Good" disableOptionCentering>
+        <mat-option *ngFor="let item of TypeGoodArr" [value]="item.Name">
+          {{item.Name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-md-2 dol-input">
+    <mat-form-field appearance="outline">
+      <mat-label>Purchase Type Of Good</mat-label>
+      <mat-select [formControl]="PurchaseTypeOfGood" placeholder="Type Of Good" disableOptionCentering>
+        <mat-option *ngFor="let item of PurchaseTypeGoodArr" [value]="item.Name">
+          {{item.Name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-md-1 dol-input">
+    <mat-checkbox *ngIf="CHECK" class="example-margin" [(ngModel)]="chkIsActive">Is Active?</mat-checkbox>
+  </div>
+  <div class="flt-btn-group">
+    <button class="btn filt-btn" matTooltip="Back To List" (click)="List()">
+      <mat-icon>list</mat-icon>
+    </button>
+    <button class="btn filt-btn" matTooltip="SAVE" (click)="Save()">
+      <mat-icon>save</mat-icon>
+    </button>
+    <button class="btn filt-btn" matTooltip="CLEAR" (click)="Clear()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+</div>
+<button *ngIf="NEWADD" class="btn ad-btn-display" id="add" matTooltip="ADD" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+<div id="grid" class="container">
+  <div class="row">
+    <ag-grid-angular style="width: 100%; height: calc(100vh - 195px);" class="ag-theme-alpine"
+      [defaultColDef]="defaultColDef" [columnDefs]="columnDefs" (gridReady)="onGridReady($event)"
+      (rowClicked)='onGridRowClicked($event)' [animateRows]="true" [pagination]="true"
+      [overlayLoadingTemplate]="loadingTemplate" [overlayNoRowsTemplate]="noRowsTemplate">
+    </ag-grid-angular>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>

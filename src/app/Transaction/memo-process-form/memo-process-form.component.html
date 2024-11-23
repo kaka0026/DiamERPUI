@@ -1,0 +1,32 @@
+<div class="user-f-main">
+  <div class="user-f-btn">
+      <label for="">Logo</label>
+      <div class="btn-d d-flex">
+      <button class="btn ad-btn-display " matTooltip="SAVE" (click)="Save()">
+        <mat-icon>save</mat-icon>
+      </button>
+      <button class="btn ad-btn-display " matTooltip="CLOSE" (click)="Close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="Dt-f">
+              <mat-form-field appearance="outline" ngDefaultControl>
+                  <mat-label>Date:</mat-label>
+                  <input matInput name="nm" [(ngModel)]="DATE" disabled="true" style="text-align: right !important;">
+                  </mat-form-field>  
+              <mat-form-field appearance="outline" ngDefaultControl>
+                  <mat-label>Time:</mat-label>
+                  <input matInput name="nm" [(ngModel)]="TIME" disabled="true" style="text-align: right !important;">
+              </mat-form-field>   
+              <mat-form-field appearance="outline" ngDefaultControl>
+                  <mat-label>Carat:</mat-label>
+                  <input matInput name="nm" [(ngModel)]="CARAT" style="text-align: right !important;">
+              </mat-form-field> 
+              <mat-form-field appearance="outline" ngDefaultControl>
+                  <mat-label>User:</mat-label>
+                  <input matInput name="nm" [(ngModel)]="USER" disabled="true" style="text-align: right !important;">
+              </mat-form-field> 
+  </div>   
+  
+</div>

@@ -1,0 +1,19 @@
+<button class="btn ad-btn-display1" matTooltip="Click To Refresh Grid" id="add" style="margin-left: auto !important;" (click)="LoadGridData()">
+    <mat-icon>refresh</mat-icon>
+</button>
+<div id="grid" class="container">
+  <div class="row" style="margin-top: 14px;">
+    <ag-grid-angular style="width: 100%; height: calc(100vh - 160px);" class="ag-theme-alpine" [defaultColDef]="defaultColDef"
+      [columnDefs]="columnDefs" (rowClicked)='onGridRowClicked($event)' (gridReady)="onGridReady($event)"
+      [animateRows]="true" [pagination]="true" [overlayLoadingTemplate]="loadingTemplate"
+      [overlayNoRowsTemplate]="noRowsTemplate">
+    </ag-grid-angular>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>

@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 col-12 pl-0">
+      <div [formGroup]="form1">
+        <h6 class="part-title">Designer</h6>
+        <div class="dov-list-group">
+          <label formArrayName="orders" *ngFor="let order of ordersFormArray.controls; let i = index"
+            class="dov-list-item">
+            <input type="checkbox" [formControlName]="i" (change)="DesignCodeChange()">
+            {{ordersData[i].name}}
+          </label>
+        </div>
+      </div>
+      <div [formGroup]="form2">
+        <h6 class="part-title">Category</h6>
+        <div class="dov-list-group">
+          <label formArrayName="category" *ngFor="let cat of CategoryFormArray.controls; let i = index"
+            class="dov-list-item">
+            <input type="checkbox" [formControlName]="i" (change)="CategoryCodeChange()">
+            {{CategoryData[i].name}}
+          </label>
+        </div>
+      </div>
+      <div *ngIf="subcat" [formGroup]="form3">
+        <h6 class="part-title">Sub Category</h6>
+        <div class="dov-list-group">
+          <label formArrayName="subcategory" *ngFor="let subcat of SubCategoryFormArray.controls; let i = index"
+            class="dov-list-item">
+            <input type="checkbox" [formControlName]="i" (change)="SubCategoryCodeChange()">
+            {{SubCategoryData[i].name}}
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-10 col-12">
+      <div id="WhiteDim1" class="d-flex flex-wrap">
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#934d4d" type="none">
+  <div class="la-ball-scale-ripple-multiple la-2x">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>
